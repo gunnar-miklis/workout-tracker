@@ -1,5 +1,4 @@
 # 📱 Workout Tracker App
----
 
 ## 🪧 About
 * App for documenting your progress in the Gym. 
