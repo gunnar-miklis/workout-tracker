@@ -25,6 +25,10 @@ html{
   font-family: var(--standard-font-family);
   font-size: var(--standard-font-size);
   color: var(--primary-text-color);
+<<<<<<< HEAD
+=======
+
+>>>>>>> f7d6057543099f5d1b8ceb3078b300e2be8cc2d0
 }
 body {
 	min-height: 100vh;
