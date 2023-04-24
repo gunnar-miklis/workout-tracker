@@ -13,7 +13,20 @@
 			<h3>{{this.title}}</h3>
       		<p>{{this.description}}</p>
       		<p>{{this.type}}</p>
-			
+          <form action="">
+            {{#if this.type "time"}}
+              <input type="number" placeholder="minutes">
+            {{/if}}
+            {{#if this.type "rep"}}
+              <input type="number" placeholder="reps">
+            {{/if}}
+            {{#if this.type "repWeight"}}
+              <input type="number" placeholder="reps">
+              <input type="number" placeholder="kg">
+            {{/if}}
+            <button type="submit">Complete</button>
+          </form>
+
 		{{/each}}
 	  </div>
     </div>
