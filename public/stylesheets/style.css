@@ -25,6 +25,7 @@ html{
   font-family: var(--standard-font-family);
   font-size: var(--standard-font-size);
   color: var(--primary-text-color);
+
 }
 body {
 	min-height: 100vh;
