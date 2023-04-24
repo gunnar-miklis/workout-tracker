@@ -7,7 +7,7 @@ const isLoggedIn = require( '../utils/isLoggedIn' );
 router.get( '/home', isLoggedIn, ( req, res, next ) => {
 	Workout.find()
 		.then( ( workoutsFromDb ) => {
-			res.render( 'home', { workoutsFromDb } );
+			res.render( 'home', { workoutsFromDb, user: req.session.sessionUser } );
 		} );
 } );
 
