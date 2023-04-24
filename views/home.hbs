@@ -1,16 +1,19 @@
 <body class="flex-column-center">
-
-<h1>Welcome User</h1>
-
-{{#each workoutsFromDb}}
-  <a href='#' class="workout-container">
-    <div class="image-container">
-      <img src="/images/man-biceps-curl.jpg" alt="">
-    </div>
-    <div class="text-container">
-      <h3>{{this.title}}</h3>
-      <p>{{this.description}}</p>
-      <p>{{this.duration}}</p>
-    </div>
-  </a>
-{{/each}}
+<h1>Welcome {{user.username}}</h1>
+<p class="secondary-text">Start workout from template</p>
+<ul class="workouts-ul">
+  {{#each workoutsFromDb}}
+    <li>
+      <a href='/tracker/{{this._id}}' class="container">
+        <div class="image-container">
+          <img src="/images/man-biceps-curl.jpg" alt="">
+        </div>
+        <div class="text-container">
+          <h3>{{this.title}}</h3>
+          <p>{{this.description}}</p>
+          <p>{{this.duration}} minutes</p>
+        </div>
+      </a>
+    </li>
+  {{/each}}
+</ul>
