@@ -30,6 +30,9 @@ body {
 	min-height: 100vh;
   background-color: var(--element-color-1);
 }
+h1{
+  padding: 15px 0;
+}
 a{
   text-decoration: none;
   transition: var(--standard-transition);
@@ -40,7 +43,7 @@ button{
 }
 /*☝ End of basic styles*/
 /*👇 Start of generic classes*/
-.button-basic{
+.standard-button{
   padding: 10px 30px;
   border: 1.5px solid var(--secondary-text-color);
   border-radius: var(--standard-border-radius);
@@ -49,11 +52,12 @@ button{
   color: var(--secondary-text-color);
   cursor: pointer;
 }
-.button-basic:hover{
+.standard-button:hover, .standard-button:focus{
+  outline: none;
   background-color: var(--secondary-text-color);
   color: var(--element-color-1);
 }
-.button-main{
+.main-button{
   padding: 10px 30px;
   border: 1.5px solid var(--main-color-2);
   border-radius: var(--standard-border-radius);
@@ -64,8 +68,67 @@ button{
   color: var(--main-color-2);
   cursor: pointer;
 }
-.button-main:hover{
+.main-button:hover, .main-button:focus{
+  outline: none;
   background-color: var(--main-color-2);
   color: var(--element-color-1);
 }
+.standard-input{
+  border: 1px solid var(--secondary-text-color);
+  border-radius: var(--standard-border-radius);
+  padding: 12px;
+  background-color: rgba(0, 0, 0, 0.5);
+  font: inherit;
+  color: var(--primary-text-color);
+  transition: var(--standard-transition);
+}
+.standard-input::placeholder{
+  color: var(--secondary-text-color);
+  transition: var(--standard-transition);
+}
+.standard-input:hover{
+  border-color: var(--main-color-1);
+}
+.standard-input:focus{
+  outline: none;
+  border-color: var(--main-color-1);
+}
+.standard-input:focus::placeholder{
+  color: var(--main-color-1);
+}
+.flex-column-center{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.flex-row-center{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
 /*☝ End of generic classes*/
+/*👇 Start of Sign Up Form*/
+.mobile-wrapper{
+  height: 100vh;
+  width: 600px;
+  max-width: 100%;
+  border-right: 1px solid var(--element-color-3);
+  border-left: 1px solid var(--element-color-3);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.signup-body .mobile-wrapper{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-image: url('../images/man-biceps-curl.jpg');
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.5);
+}
+.signup-container{
+  margin-top: 100px;
+}
