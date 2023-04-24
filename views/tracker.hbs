@@ -1,34 +1,32 @@
 <body class="flex-column-center">
 
-<h1>tracker</h1>
+  <p>00:00</p>
+  <div class="flex-column-center">
+    <h1>{{workoutFromDb.title}}</h1>
+    <p>{{workoutFromDb.description}}</p>
+		{{#each workoutFromDb.exercises}}
+      <div class="container exercise flex-row-between flex-wrap">
+        <div>
+          <h3>{{this.title}}</h3>
+          <p>{{this.description}}</p>
 
-{{#each workoutFromDb}}
-    <div class="text-container">
-      <h3>{{this.title}}</h3>
-      <p>{{this.description}}</p>
-      <p>{{this.duration}}</p>
+        </div>
 
-	  <div>
-		{{#each this.exercises}}
-			<h3>{{this.title}}</h3>
-      		<p>{{this.description}}</p>
-      		<p>{{this.type}}</p>
-          <form action="">
+        <form action="">
+          <div class="flex-row-center">
             {{#ifeq this.type "time"}}
-              <input type="number" placeholder="minutes">
+              <input class="standard-input" type="number" placeholder="minutes">
             {{/ifeq}}
             {{#ifeq this.type "rep"}}
-              <input type="number" placeholder="reps">
+              <input class="standard-input" type="number" placeholder="reps">
             {{/ifeq}}
             {{#ifeq this.type "weight"}}
-              <input type="number" placeholder="reps">
-              <input type="number" placeholder="kg">
+              <input class="standard-input" type="number" placeholder="reps">
+              <input class="standard-input" type="number" placeholder="kg">
             {{/ifeq}}
-            <button type="submit">Complete</button>
-          </form>
-
+            <button class="main-button" type="submit">✔</button>
+          </div>
+        </form>
+      </div>
 		{{/each}}
-	  </div>
     </div>
-  </a>
-{{/each}}
