@@ -10,7 +10,24 @@ router.get('/signup', (req, res, next) => {
 
 router.post('/signup', (req, res, next) => {
   const {username, email, password} = req.body
-  console.log(`Username: ${username} Password: ${password}`)
+
+  //validate password security
+  if(password.length <= 8){
+    res.render('auth/signup', { message: 'Password must have at least 8 characters'})
+    return
+  }
+  if (!/[A-Z]/.test(password) && !/[a-z]/.test(password)) {
+    res.render('auth/signup', { message: 'Password must contain both uppercase and lowercase letters' });
+    return;
+  }
+  if (!/\d/.test(password)) {
+    res.render('auth/signup', { message: 'Password must contain at least one digit' });
+    return;
+  }
+  if (!/[@!#$%^&*()_+=[\]{}|\\,.?:-]/.test(password)) {
+    res.render('auth/signup', { message: 'Password must contain at least one special character' });
+    return;
+  }
 
   User.findOne({username})
     .then(userFromDb => {
@@ -18,7 +35,6 @@ router.post('/signup', (req, res, next) => {
         res.render('auth/signup', { message: 'Username is already taken!'})
       }
       else{
-
         User.findOne({email})
           .then(emailUserFromDb => {
             if(emailUserFromDb !== null){
