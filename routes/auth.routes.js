@@ -2,6 +2,7 @@ const express = require( 'express' );
 const router = express.Router();
 const bcrypt = require( 'bcryptjs' );
 const User = require( '../models/User.model' );
+const isLoggedIn = require( '../utils/isLoggedIn' );
 
 // NOTE: Signup
 router.get( '/signup', ( req, res, next ) => {
@@ -84,7 +85,7 @@ router.post( '/login', ( req, res, next ) => {
 					};
 					req.session.sessionUser = sessionUser;
 					// redirect to user page
-					res.redirect( 'home/index' );
+					res.redirect( 'home' );
 				} else {
 					res.render( 'auth/login', { message: 'Wrong Credentials' } );
 				}
@@ -93,6 +94,11 @@ router.post( '/login', ( req, res, next ) => {
 			}
 		} )
 		.catch( ( err ) => next( err ) );
+} );
+
+// NOTE: Userpage, home
+router.get( '/home', isLoggedIn, ( req, res, next ) => {
+	res.render( 'home' );
 } );
 
 module.exports = router;
