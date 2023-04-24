@@ -1,20 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 *{
   margin: 0;
   padding: 0;
 }
+:root{
+  --element-color-1: #13161B;
+  --element-color-2: #2C2E35;
+  --element-color-3: #46484E;
+
+  --main-color-1: #00fefe;
+  --main-color-2: #00FE88;
+  --main-color-2-transparent: #00fe8758;
+
+  --primary-text-color: #f2f2f2;
+  --secondary-text-color: #a8aab7;
+
+  --standard-border-radius: 4px;
+  --standard-shadow: 0 3px 5px 2px rgba(0, 0, 0, 0.125);
+  --standard-transition: 100ms ease-in-out; 
+  --standard-font-family: 'Poppins', Segoe UI, sans-serif;
+  --standard-font-size: 14pt;
+}
 html{
-  font-size: 14pt;
-  font-family: sans-serif;
+  font-family: var(--standard-font-family);
+  font-size: var(--standard-font-size);
+  color: var(--primary-text-color);
 }
 body {
-	padding: 50px;
-	/* font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
+	min-height: 100vh;
+  background-color: var(--element-color-1);
 }
-
-a {
-	color: #00b7ff;
+a{
+  text-decoration: none;
+  transition: var(--standard-transition);
 }
-
-h1 {
-	color: 15px;
+button{
+  font: inherit;
+  transition: var(--standard-transition);
 }
+/*☝ End of basic styles*/
+/*👇 Start of generic classes*/
+.button-basic{
+  padding: 10px 30px;
+  border: 1.5px solid var(--secondary-text-color);
+  border-radius: var(--standard-border-radius);
+  box-shadow: var(--standard-shadow);
+  background-color: var(--element-color-3);
+  color: var(--secondary-text-color);
+  cursor: pointer;
+}
+.button-basic:hover{
+  background-color: var(--secondary-text-color);
+  color: var(--element-color-1);
+}
+.button-main{
+  padding: 10px 30px;
+  border: 1.5px solid var(--main-color-2);
+  border-radius: var(--standard-border-radius);
+  box-shadow: var(--standard-shadow);
+  background-color: var(--main-color-2-transparent);
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--main-color-2);
+  cursor: pointer;
+}
+.button-main:hover{
+  background-color: var(--main-color-2);
+  color: var(--element-color-1);
+}
+/*☝ End of generic classes*/
