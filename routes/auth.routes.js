@@ -7,6 +7,6 @@ router.get('/signup', (req, res, next) => {
 
 router.post('/signup', (req, res, next) => {
   const {username, email, password} = req.body
-  console.log(`Username: ${username}`)
+  console.log(`Username: ${username} Password: ${password}`)
 })
 module.exports = router;
