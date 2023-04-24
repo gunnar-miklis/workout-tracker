@@ -14,16 +14,16 @@
       		<p>{{this.description}}</p>
       		<p>{{this.type}}</p>
           <form action="">
-            {{#if this.type "time"}}
+            {{#ifeq this.type "time"}}
               <input type="number" placeholder="minutes">
-            {{/if}}
-            {{#if this.type "rep"}}
+            {{/ifeq}}
+            {{#ifeq this.type "rep"}}
               <input type="number" placeholder="reps">
-            {{/if}}
-            {{#if this.type "repWeight"}}
+            {{/ifeq}}
+            {{#ifeq this.type "weight"}}
               <input type="number" placeholder="reps">
               <input type="number" placeholder="kg">
-            {{/if}}
+            {{/ifeq}}
             <button type="submit">Complete</button>
           </form>
 
