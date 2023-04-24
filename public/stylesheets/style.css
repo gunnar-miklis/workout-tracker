@@ -144,20 +144,3 @@ button{
 input[name="password"]:focus ~ .password-validation-ul{
   display: block;
 }
-.workout-container{
-  padding: 10px;
-  width: 100%;
-  border-radius: var(--standard-border-radius);
-  display: flex;
-}
-.workout-container > .image-container{
-  aspect-ratio: 1 / 1;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.workout-container .text-container{
-  display: flex;
-  flex-direction: column;
-}
