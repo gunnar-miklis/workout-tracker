@@ -30,7 +30,7 @@ const MongoStore = require( 'connect-mongo' );
 app.use( session(
 	{
 		secret: process.env.SESSION_SECRET,
-		cookie: { maxAge: 1000 * 60 * 5 }, // 5 min
+		cookie: { maxAge: 1000 * 60 * 60 * 24 }, // 1 day
 		resave: true,
 		saveUninitialized: true,
 		store: MongoStore.create(

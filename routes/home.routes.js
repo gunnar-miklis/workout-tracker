@@ -8,7 +8,8 @@ router.get( '/home', isLoggedIn, ( req, res, next ) => {
 	Workout.find()
 		.then( ( workoutsFromDb ) => {
 			res.render( 'home', { workoutsFromDb, user: req.session.sessionUser } );
-		} );
+		} )
+		.catch( ( err ) => next( err ) );
 } );
 
 module.exports = router;

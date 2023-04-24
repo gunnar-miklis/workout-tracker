@@ -1,0 +1,21 @@
+<body class="flex-column-center">
+
+<h1>tracker</h1>
+
+{{#each workoutFromDb}}
+    <div class="text-container">
+      <h3>{{this.title}}</h3>
+      <p>{{this.description}}</p>
+      <p>{{this.duration}}</p>
+
+	  <div>
+		{{#each this.exercises}}
+			<h3>{{this.title}}</h3>
+      		<p>{{this.description}}</p>
+      		<p>{{this.type}}</p>
+			
+		{{/each}}
+	  </div>
+    </div>
+  </a>
+{{/each}}
