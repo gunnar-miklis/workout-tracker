@@ -2,9 +2,11 @@
 
 <div class="signup-container flex-column-center">
   <h1>Login</h1>
+  {{#if message}}
+    {{message}}
+  {{/if}}
   <form action="/login" method="POST" class="flex-column-center">
     <input class="standard-input" type="text" name="username" placeholder="USERNAME">
-    <input class="standard-input" type="email" name="email" placeholder="EMAIL">
     <input class="standard-input" type="password" name="password" placeholder="PASSWORD">
     <button type="submit" class="main-button">Login</button>
   </form>

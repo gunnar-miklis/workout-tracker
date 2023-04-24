@@ -44,7 +44,14 @@ router.post( '/signup', ( req, res, next ) => {
 							const hash = bcrypt.hashSync( password, salt );
 
 							User.create( { username: username, email: email, password: hash } )
-								.then( () => {
+								.then( ( newUser ) => {
+									// create session
+									const sessionUser = {
+										id: newUser._id,
+										username: newUser.username,
+										role: newUser.role,
+									};
+									req.session.sessionUser = sessionUser;
 									res.redirect( '/' );
 								} )
 								.catch( ( err ) => next( err ) );
@@ -60,8 +67,9 @@ router.get( '/login', ( req, res, next ) => {
 } );
 
 router.post( '/login', ( req, res, next ) => {
-	const { username, email, password } = req.body;
+	const { username, password } = req.body;
 
+	// find by email
 	User.findOne( { username } )
 		.then( ( userFromDb ) => {
 			// if user is in database
@@ -75,9 +83,16 @@ router.post( '/login', ( req, res, next ) => {
 						role: userFromDb.role,
 					};
 					req.session.sessionUser = sessionUser;
+					// redirect to user page
+					res.redirect( 'home/index' );
+				} else {
+					res.render( 'auth/login', { message: 'Wrong Credentials' } );
 				}
+			} else {
+				res.render( 'auth/login', { message: 'Wrong Credentials' } );
 			}
-		} );
+		} )
+		.catch( ( err ) => next( err ) );
 } );
 
 module.exports = router;
