@@ -84,7 +84,7 @@ router.post( '/login', ( req, res, next ) => {
 					};
 					req.session.sessionUser = sessionUser;
 					// redirect to user page
-					res.redirect( 'home/index' );
+					res.redirect( 'home' );
 				} else {
 					res.render( 'auth/login', { message: 'Wrong Credentials' } );
 				}
