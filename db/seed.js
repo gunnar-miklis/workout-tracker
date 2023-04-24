@@ -1,12 +1,10 @@
+require( 'dotenv' ).config();
 const mongoose = require( 'mongoose' );
 const Exercise = require( '../models/Exercise.model' );
 const Workout = require( '../models/Workout.model' );
 
-const MONGO_URI = process.env.MONGODB_URI;
-
 const exercises = [
 	{
-		'id': 'ex-1',
 		'title': 'jogging',
 		'description': 'run for your life',
 		'type': 'time',
@@ -20,7 +18,6 @@ const exercises = [
 		],
 	},
 	{
-		'id': 'ex-2',
 		'title': 'push up',
 		'description': 'push the floor away',
 		'type': 'rep',
@@ -34,7 +31,6 @@ const exercises = [
 		],
 	},
 	{
-		'id': 'ex-3',
 		'title': 'bench press',
 		'description': 'press the bench',
 		'type': 'weight',
@@ -51,62 +47,51 @@ const exercises = [
 
 const workouts = [
 	{
-		'strenghtDay': [
-			{
-				'title': 'Strength Day',
-				'date': '2023-04-21',
-				'duration': 30,
-				'exercises': [
-					{
-						'exerciseId': 'ex-2',
-					},
-					{
-						'exerciseId': 'ex-3',
-					},
-					{
-						'exerciseId': 'ex-2',
-					},
-				],
-			},
-		],
+		'title': 'Strength Day',
+		'description': 'it\'s all about lifting weights',
+		'date': '2023-04-21',
+		'duration': 30,
+		'exercises': [],
 	},
 	{
-		'enduranceDay': [
-			{
-				'title': 'Endurance Day',
-				'date': '2023-04-24',
-				'duration': 60,
-				'exercises': [
-					{
-						'exerciseId': 'ex-1',
-					},
-					{
-						'exerciseId': 'ex-1',
-					},
-					{
-						'exerciseId': 'ex-1',
-					},
-				],
-			},
-		],
+		'title': 'Endurance Day',
+		'description': 'just keep going...',
+		'date': '2023-04-24',
+		'duration': 60,
+		'exercises': [],
 	},
 ];
 
 
-mongoose.connect( MONGO_URI )
-	.connect( MONGO_URI )
+mongoose
+	.connect( process.env.MONGODB_URI )
 	.then( ( x ) => {
-		console.log( `Connected to Mongo database: "${x.connections[0].name}"` );
-		Exercise.create( exercises );
+		console.log( `🔄️ Connected to Mongo database: "${x.connections[0].name}"` );
+		return Exercise.create( exercises );
+	} )
+	.then( ( x ) => {
+		console.log( x );
+		console.log( '✅ exercises added' );
+
+		// strength day: push up, bench press, push up
+		let ids = [x[1]._id, x[2]._id, x[1]._id];
+		workouts[0].exercises.push( ...ids );
+
+		// endurance day: jogging, jogging, jogging
+		ids = [x[0]._id, x[0]._id, x[0]._id];
+		workouts[1].exercises.push( ...ids );
+
 		return Workout.create( workouts );
 	} )
-	.then( ( booksFromDB ) => {
-		console.log( `Created ${booksFromDB.length} books` );
+	.then( ( x ) => {
+		console.log( x );
+		console.log( '✅ workouts added' );
 		return mongoose.connection.close();
 	} )
 	.then( () => {
-		console.log( 'DB connection closed!' );
+		console.log( '❌ DB connection closed!' );
 	} )
 	.catch( ( err ) => {
-		console.log( `An error occurred while creating books from the DB: ${err}` );
+		console.log( '⚠️ there was an error' );
+		console.log( err );
 	} );
