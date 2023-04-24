@@ -30,7 +30,7 @@ const MongoStore = require( 'connect-mongo' );
 app.use( session(
 	{
 		secret: process.env.SESSION_SECRET,
-		cookie: { maxAge: 1000 * 60 * 5 }, // 5 min
+		cookie: { maxAge: 1000 * 60 * 60 * 24 }, // 1 day
 		resave: true,
 		saveUninitialized: true,
 		store: MongoStore.create(
@@ -45,13 +45,13 @@ app.use( session(
 const indexRoutes = require( './routes/index.routes' );
 const authRoutes = require( './routes/auth.routes' );
 const homeRoutes = require( './routes/home.routes' );
-const trackerRoutes = require( './routes/tracker.routes' );
-const statisticsRoutes = require( './routes/statistics.routes' );
+// const trackerRoutes = require( './routes/tracker.routes' );
+// const statisticsRoutes = require( './routes/statistics.routes' );
 app.use( '/', indexRoutes );
 app.use( '/', authRoutes );
 app.use( '/', homeRoutes );
-app.use( '/', trackerRoutes );
-app.use( '/', statisticsRoutes );
+// app.use( '/', trackerRoutes );
+// app.use( '/', statisticsRoutes );
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require( './error-handling' )( app );
