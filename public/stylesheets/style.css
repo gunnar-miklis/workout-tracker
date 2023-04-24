@@ -111,6 +111,14 @@ button{
   align-items: center;
   gap: 10px;
 }
+.flex-row-between{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.flex-wrap{
+  flex-wrap: wrap;
+}
 .secondary-text{
   color: var(--secondary-text-color);
 }
@@ -164,8 +172,8 @@ input[name="password"]:focus ~ .password-validation-ul{
   border: 1.5px solid var(--element-color-3);
   border-radius: var(--standard-border-radius);
   color: var(--primary-text-color);
-  display: flex;
   gap: 10px;
+  display: flex;
 }
 .container > .image-container{
   height: 100px;
@@ -180,4 +188,7 @@ input[name="password"]:focus ~ .password-validation-ul{
 .container .text-container{
   display: flex;
   flex-direction: column;
+}
+.container.exercise input{  
+  width: 60px;
 }
