@@ -1,0 +1,24 @@
+<table>
+	<thead>
+		<tr>
+			<th>Exercise</th>
+			<th>Type</th>
+			<th>Time</th>
+			<th>Rep</th>
+			<th>Weight</th>
+			<th>Distance</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#each this.exercises}}
+		<tr>
+			<td>{{title}}</td>
+			<td>{{type}}</td>
+			<td>{{time}}</td>
+			<td>{{rep}}</td>
+			<td>{{weight}}</td>
+			<td>{{distance}}</td>
+		</tr>
+		{{/each}}
+	</tbody>
+</table>

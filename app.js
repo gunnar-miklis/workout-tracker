@@ -21,6 +21,7 @@ hbs.registerHelper( 'formatDate', function( date ) {
 	const year = date.getFullYear();
 	return `${day}.${month}.${year}`;
 } );
+hbs.registerPartials( __dirname + '/views/partials' );
 
 const app = express();
 
