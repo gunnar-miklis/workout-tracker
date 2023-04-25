@@ -2,19 +2,25 @@
 
 <h1>Welcome {{user.username}}</h1>
 <p class="secondary-text">Start workout from template</p>
+<a href='/tracker' class="main-button"> Track Workout </a>
+
 <ul class="workouts-ul">
-  {{#each workoutsFromDb}}
-    <li>
-      <a href='/tracker/{{this._id}}' class="container">
-        <div class="image-container">
-          <img src="/images/man-biceps-curl.jpg" alt="">
-        </div>
-        <div class="text-container">
-          <h3>{{this.title}}</h3>
-          <p>{{this.description}}</p>
-          <p>{{this.duration}} minutes</p>
-        </div>
-      </a>
-    </li>
-  {{/each}}
+	{{#each pastWorkouts}}
+		<li class="container">
+			<div class="image-container">
+				<img src="/images/man-biceps-curl.jpg" alt="">
+			</div>
+			<div class="text-container">
+				<h3>{{title}}</h3>
+				<p>{{description}}</p>
+				<p>{{duration}} minutes</p>
+				<p>{{date}} minutes</p>
+				{{#each exercises}}
+					<h3>{{@index}} — {{title}}</h3>
+					<p>desc: {{description}}</p>
+					<p>type: {{type}}</p>
+				{{/each}}
+			</div>
+		</li>
+	{{/each}}
 </ul>
