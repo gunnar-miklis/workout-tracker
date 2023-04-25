@@ -2,7 +2,28 @@
 
 <script type="text/javascript" src="/js/input-selection.js"></script>
   <p>00:00</p>
+  {{!-- <table>
+    <thead>
+      <tr>
+        <th>Exercise</th>
+        <th>reps</th>
+        <th>kg</th>
+        <th>min</th>
+        <th>km</th>
+      </tr>
+    </thead>
+    <tbody class="completed-exercises">
+      <tr>
+        
+      </tr>
+    </tbody>
+  </table> --}}
+
   <div id="exercises-container" class="flex-column-center">
-    
+
   </div>
   <button class="standard-button" onclick="addExerciseForm()">Add Exercise</button>
+  <form action="/saveworkout" method="POST">
+    <input class="standard-input" type="text" name="title" placeholder="workout title">
+    <button class="main-button" type="submit">Save Workout</button>
+  </form>
