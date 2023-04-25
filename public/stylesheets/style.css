@@ -46,6 +46,10 @@ hr{
   color: var(--secondary-text-color);
   background-color: var(--secondary-text-color);
   border-color: var(--secondary-text-color);
+  margin: 30px 0;
+}
+strong {
+	color: var(--main-color-2);
 }
 /*☝ End of basic styles*/
 /*👇 Start of generic classes*/
@@ -112,6 +116,13 @@ hr{
   align-items: center;
   gap: 10px;
 }
+.flex-column{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: lex-start;
+  gap: 10px;
+}
 .flex-row-center{
   display: flex;
   flex-direction: row;
@@ -123,6 +134,7 @@ hr{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   gap: 10px;
 }
 .flex-wrap{
@@ -209,4 +221,70 @@ input[name="password"]:focus ~ .password-validation-ul{
 }
 .container.exercise input[name="title"]{
   width: unset;
+}
+/* =======================================
+ *  STATISTICS
+ * ======================================= */
+summary {
+	cursor: pointer;
+}
+summary p {
+	padding: 0;
+}
+summary h3 {
+	text-transform: uppercase;
+}
+table {
+	border-collapse: collapse;
+	vertical-align: middle;
+	text-align: center;
+	margin: 15px 0;
+}
+th, td {
+	padding: 10px;
+}
+th {
+	font-weight: normal;
+	text-transform: uppercase;
+}
+td {
+	font-weight: bold;
+	border-top: 0.5px solid var(--secondary-text-color);
+}
+tr:hover {
+	background-color: var(--secondary-text-color);
+}
+td:first-child {
+	font-weight: normal;
+	color: var(--main-color-2)
+}
+th:first-child, td:first-child {
+	text-align: left;
+}
+thead, tbody {
+	border-top: 3px solid var(--secondary-text-color);
+	border-bottom: 3px solid var(--secondary-text-color);
+}
+.details {
+  box-sizing: border-box;
+  width: 100%;
+  color: var(--primary-text-color);
+  gap: 10px;
+  display: flex;
+}
+.logout {
+	background-color: unset;
+	border: unset;
+	color: var(--secondary-text-color);
+	text-align: center;
+  	cursor: pointer;
+	margin: 30px 0 15px;
+}
+.logout:hover {
+	background-color: unset;
+	border: unset;
+	color: var(--main-color-2);
+}
+ul.summary {
+	list-style-position: inside;
 }
