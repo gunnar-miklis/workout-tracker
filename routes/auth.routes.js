@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require( 'bcryptjs' );
 const User = require( '../models/User.model' );
 
-// NOTE: Signup
+// NOTE: Signup Page
 router.get( '/signup', ( req, res, next ) => {
 	res.render( 'auth/signup' );
 } );
@@ -51,7 +51,7 @@ router.post( '/signup', ( req, res, next ) => {
 										username: userFromDb.username,
 									};
 									req.session.sessionUser = sessionUser;
-									res.redirect( '/' );
+									res.redirect( 'auth/welcome' );
 								} )
 								.catch( ( err ) => next( err ) );
 						}
@@ -60,7 +60,7 @@ router.post( '/signup', ( req, res, next ) => {
 		} );
 } );
 
-// NOTE: Login
+// NOTE: Login Page
 router.get( '/login', ( req, res, next ) => {
 	res.render( 'auth/login' );
 } );
@@ -91,6 +91,22 @@ router.post( '/login', ( req, res, next ) => {
 			}
 		} )
 		.catch( ( err ) => next( err ) );
+} );
+
+// NOTE: Logout Page
+router.get( '/logout', ( req, res, next )=> {
+	req.session.destroy( ( err ) => {
+		if ( err ) next( err );
+		res.redirect( 'auth/logout' );
+	} );
+} );
+router.get( '/auth/logout', ( req, res, next ) => {
+	res.render( 'auth/logout' );
+} );
+
+// NOTE: Welcome Page
+router.get( '/welcome', ( req, res, next ) => {
+	res.render( 'auth/welcome' );
 } );
 
 module.exports = router;

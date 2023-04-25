@@ -1,9 +1,12 @@
 <body class="flex-column-center">
 
 <h1>Welcome {{username}}</h1>
-<p class="secondary-text">Start workout from template</p>
+<p class="secondary-text">Start tracking your workout!</p>
 <a href='/tracker' class="main-button"> Track Workout </a>
 
+<hr>
+
+<h2>Statistics</h2>
 <p>Workouts in total: {{totalWorkouts}}</p>
 <p>Active Days: {{activeDays}}</p>
 
@@ -25,3 +28,7 @@
 		</details>
 	{{/each}}
 </ul>
+
+<hr>
+
+<a href="/logout" class="standard-button">Logout</a>
