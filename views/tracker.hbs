@@ -1,32 +1,8 @@
 <body class="flex-column-center">
 
+<script type="text/javascript" src="/js/input-selection.js"></script>
   <p>00:00</p>
-  <div class="flex-column-center">
-    <h1>{{workoutFromDb.title}}</h1>
-    <p>{{workoutFromDb.description}}</p>
-		{{#each workoutFromDb.exercises}}
-      <div class="container exercise flex-row-between flex-wrap">
-        <div>
-          <h3>{{this.title}}</h3>
-          <p>{{this.description}}</p>
-
-        </div>
-
-        <form action="">
-          <div class="flex-row-center">
-            {{#ifeq this.type "time"}}
-              <input class="standard-input" type="number" placeholder="minutes">
-            {{/ifeq}}
-            {{#ifeq this.type "rep"}}
-              <input class="standard-input" type="number" placeholder="reps">
-            {{/ifeq}}
-            {{#ifeq this.type "weight"}}
-              <input class="standard-input" type="number" placeholder="reps">
-              <input class="standard-input" type="number" placeholder="kg">
-            {{/ifeq}}
-            <button class="main-button" type="submit">✔</button>
-          </div>
-        </form>
-      </div>
-		{{/each}}
-    </div>
+  <div id="exercises-container" class="flex-column-center">
+    
+  </div>
+  <button class="standard-button" onclick="addExerciseForm()">Add Exercise</button>
