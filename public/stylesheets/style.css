@@ -28,7 +28,7 @@ html{
 }
 body {
 	min-height: 100vh;
-  background-color: var(--element-color-1);
+  background-color: black;
 }
 h1{
   padding: 15px 0;
@@ -36,6 +36,7 @@ h1{
 a{
   text-decoration: none;
   transition: var(--standard-transition);
+  color: var(--main-color-2);
 }
 button{
   font: inherit;
@@ -143,6 +144,7 @@ hr{
   border-right: 1px solid var(--element-color-3);
   border-left: 1px solid var(--element-color-3);
   padding: 10px;
+  background-color: var(--element-color-1);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
