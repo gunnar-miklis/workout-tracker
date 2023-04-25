@@ -30,9 +30,9 @@ require( './config' )( app );
 
 // default value for title local
 const capitalize = require( './utils/capitalize' );
-const projectName = 'workout-tracker';
+const projectName = 'RepCount';
 
-app.locals.appTitle = `${capitalize( projectName )} created with IronLauncher`;
+app.locals.appTitle = projectName;
 
 // Configue Session
 const session = require( 'express-session' );
