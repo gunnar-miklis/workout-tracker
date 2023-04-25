@@ -17,6 +17,10 @@ const exerciseSchema = new Schema(
 			enum: ['rep', 'weight', 'time'],
 			required: true,
 		},
+		distance: {
+			type: Number,
+			default: 0,
+		},
 		rep: {
 			type: Number,
 			default: 0,

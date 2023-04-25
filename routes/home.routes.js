@@ -5,14 +5,6 @@ const User = require( '../models/User.model' );
 const isLoggedIn = require( '../utils/isLoggedIn' );
 
 // NOTE: home
-// router.get( '/home', isLoggedIn, ( req, res, next ) => {
-// 	Workout.find()
-// 		.then( ( workoutsFromDb ) => {
-// 			res.render( 'home', { workoutsFromDb, user: req.session.sessionUser } );
-// 		} )
-// 		.catch( ( err ) => next( err ) );
-// } );
-
 router.get( '/home', isLoggedIn, ( req, res, next ) => {
 	const user = req.session.sessionUser;
 	const username = user.username;
