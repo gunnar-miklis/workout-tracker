@@ -115,12 +115,16 @@ button{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 10px;
 }
 .flex-wrap{
   flex-wrap: wrap;
 }
 .secondary-text{
   color: var(--secondary-text-color);
+}
+.hide{
+  display: none;
 }
 /*☝ End of generic classes*/
 /*👇 Start of Sign Up Form*/
@@ -135,11 +139,13 @@ button{
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .signup-body .mobile-wrapper{
-  display: flex;
   align-items: center;
-  flex-direction: column;
   background-image: url('../images/man-biceps-curl.jpg');
   box-shadow: inset 0 0 0 1000px rgba(0,0,0,.5);
 }
@@ -191,4 +197,7 @@ input[name="password"]:focus ~ .password-validation-ul{
 }
 .container.exercise input{  
   width: 60px;
+}
+.container.exercise input[name="title"]{
+  width: unset;
 }
