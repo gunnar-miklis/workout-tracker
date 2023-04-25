@@ -1,4 +1,5 @@
 <body class="flex-column-center">
+<script type="text/javascript" src="/js/delete-confirmation.js"></script>
 
 <h1>Welcome {{username}}</h1>
 <p class="secondary-text">Start tracking your workout!</p>
@@ -7,28 +8,32 @@
 <hr>
 
 <h2>Statistics</h2>
-<p>Workouts in total: {{totalWorkouts}}</p>
-<p>Active Days: {{activeDays}}</p>
+<p>Total Workouts: <strong>{{totalWorkouts}}</strong></p>
+<p>Active Days: <strong>{{activeDays}}</strong></p>
 
 <ul class="workouts-ul">
 	{{#each pastWorkouts}}
 		<details class="container">
-			<summary>
-			<div class="image-container">
-				{{!-- <img src="/images/man-biceps-curl.jpg" alt=""> --}}
-			</div>
-			<div class="text-container">
+			<summary class="flex-row-between">
 				<h3>{{title}}</h3>
 				<p>{{formatDate date}}</p>
-			</div>
 			</summary>
-				<p><i>{{description}}</i></p>
-				{{> exerciseTable this}}
-				<p>Duration: {{duration}} minutes</p>
+				<div class="details flex-column">
+					<p><i>{{description}}</i></p>
+					{{> exerciseTable this}}
+					<h4>Summary</h4>
+					<ul class="summary">
+						<li>Total Exercises: <strong>{{totalExercises}}</strong></li>
+						<li>Total Duration: <strong>{{duration}}</strong></li>
+					</ul>
+				</div>
+				<div>
+					<button class="logout" onclick="deleteWorkout()">Delete this Workout 🗑️</button>
+				</div>
 		</details>
 	{{/each}}
 </ul>
 
 <hr>
 
-<a href="/logout" class="standard-button">Logout</a>
+<a href="/auth/logout" class="logout">Logout</a>

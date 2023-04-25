@@ -12,16 +12,8 @@ const express = require( 'express' );
 // Handles the handlebars
 // https://www.npmjs.com/package/hbs
 const hbs = require( 'hbs' );
-hbs.registerHelper( 'ifeq', function( arg1, arg2, options ) {
-	return ( arg1 === arg2 ) ? options.fn( this ) : options.inverse( this );
-} );
-hbs.registerHelper( 'formatDate', function( date ) {
-	const day = ( '0' + date.getDate() ).slice( -2 );
-	const month = ( '0' + ( date.getMonth() + 1 ) ).slice( -2 );
-	const year = date.getFullYear();
-	return `${day}.${month}.${year}`;
-} );
 hbs.registerPartials( __dirname + '/views/partials' );
+require( './utils/handlebar-helpers' );
 
 const app = express();
 
@@ -40,7 +32,7 @@ const MongoStore = require( 'connect-mongo' );
 app.use( session(
 	{
 		secret: process.env.SESSION_SECRET,
-		cookie: { maxAge: 1000 * 60 * 60 * 24 }, // 1 day
+		cookie: { maxAge: 1000 * 60 * 60 }, // 1 hour
 		resave: true,
 		saveUninitialized: true,
 		store: MongoStore.create(
