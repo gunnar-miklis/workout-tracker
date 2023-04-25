@@ -46,12 +46,9 @@ router.post( '/signup', ( req, res, next ) => {
 							User.create( { username: username, email: email, password: hash } )
 								.then( ( newUser ) => {
 									// create session
-									const sessionUser = {
-										id: newUser._id,
-										username: newUser.username,
-										role: newUser.role,
-									};
+									const sessionUser = newUser;
 									req.session.sessionUser = sessionUser;
+									req.session.sessionUser.password = null;
 									res.redirect( '/' );
 								} )
 								.catch( ( err ) => next( err ) );
@@ -77,12 +74,9 @@ router.post( '/login', ( req, res, next ) => {
 				// compare password
 				if ( bcrypt.compareSync( password, userFromDb.password ) ) {
 					// create session
-					const sessionUser = {
-						id: userFromDb._id,
-						username: userFromDb.username,
-						role: userFromDb.role,
-					};
+					const sessionUser = userFromDb;
 					req.session.sessionUser = sessionUser;
+					req.session.sessionUser.password = null;
 					// redirect to user page
 					res.redirect( 'home' );
 				} else {

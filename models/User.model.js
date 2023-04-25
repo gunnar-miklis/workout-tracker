@@ -24,6 +24,12 @@ const userSchema = new Schema(
 			enum: ['admin', 'user'],
 			default: 'user',
 		},
+		workouts: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'Workout',
+			},
+		],
 	},
 	{
 		timestamps: true,
