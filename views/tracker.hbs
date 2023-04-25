@@ -1,31 +1,32 @@
 <body class="flex-column-center">
 
 <script type="text/javascript" src="/js/input-selection.js"></script>
-  <a href="/home">← Cancel Workout</a>
-  {{!-- <table>
-    <thead>
-      <tr>
-        <th>Exercise</th>
-        <th>reps</th>
-        <th>kg</th>
-        <th>min</th>
-        <th>km</th>
-      </tr>
-    </thead>
-    <tbody class="completed-exercises">
-      <tr>
-        
-      </tr>
-    </tbody>
-  </table> --}}
-  <p class="secondary-text">Add your exercises here: </p>
-  <div id="exercises-container" class="flex-column-center">
+<a href="/home">← Cancel Workout</a>
+{{!-- <table>
+<thead>
+	<tr>
+	<th>Exercise</th>
+	<th>reps</th>
+	<th>kg</th>
+	<th>min</th>
+	<th>km</th>
+	</tr>
+</thead>
+<tbody class="completed-exercises">
+	<tr>
+	
+	</tr>
+</tbody>
+</table> --}}
+<p class="secondary-text">Add your exercises here: </p>
+<div id="exercises-container" class="flex-column-center">
+</div>
+<button class="standard-button" onclick="addExerciseForm()">Add Exercise</button>
 
-  </div>
-  <button class="standard-button" onclick="addExerciseForm()">Add Exercise</button>
-  <hr>
-  <p class="secondary-text">When you are done: Name and finish your workout.</p>
-  <form class="flex-row-between" action="/saveworkout" method="POST">
-    <input class="standard-input" type="text" name="title" placeholder="workout title" required>
-    <button class="main-button" type="submit">Finish Workout</button>
-  </form>
+<hr>
+
+<p class="secondary-text">When you are done: Name and finish your workout.</p>
+<form class="flex-row-between" action="/saveworkout" method="POST">
+	<input class="standard-input" type="text" name="title" placeholder="workout title" required>
+<button class="main-button" type="submit">Finish Workout</button>
+</form>
