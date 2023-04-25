@@ -6,21 +6,43 @@
 
 <ul class="workouts-ul">
 	{{#each pastWorkouts}}
-		<li class="container">
+		<details class="container">
+			<summary>
 			<div class="image-container">
-				<img src="/images/man-biceps-curl.jpg" alt="">
+				{{!-- <img src="/images/man-biceps-curl.jpg" alt=""> --}}
 			</div>
 			<div class="text-container">
 				<h3>{{title}}</h3>
 				<p>{{description}}</p>
 				<p>{{duration}} minutes</p>
 				<p>{{date}} minutes</p>
-				{{#each exercises}}
-					<h3>{{@index}} — {{title}}</h3>
-					<p>desc: {{description}}</p>
-					<p>type: {{type}}</p>
-				{{/each}}
 			</div>
-		</li>
+			</summary>
+				<table>
+					<caption>Exercises</caption>
+					<thead>
+						<tr>
+							<th>Exercise</th>
+							<th>Type</th>
+							<th>Time</th>
+							<th>Rep</th>
+							<th>Weight</th>
+							<th>Distance</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							{{#each exercises}}
+								<td>{{title}}</td>
+								<td>{{type}}</td>
+								<td>{{time}}</td>
+								<td>{{rep}}</td>
+								<td>{{repWeight}}</td>
+								<td>{{distance}}</td>
+							{{/each}}
+						</tr>
+					</tbody>
+				</table>
+		</details>
 	{{/each}}
 </ul>
