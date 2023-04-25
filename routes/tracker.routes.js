@@ -29,12 +29,13 @@ router.post('/tracker', (req, res, next) => {
 router.post('/saveworkout', (req, res, next) => {
   const {title} = req.body
   const exercises = req.session.workoutExercises || [] // initialize the array if it's undefined
-  Workout.create({title, exercises})
+  Workout.create({title, date: new Date(), exercises}) 
     .then(createdWorkout => {
       const userId = req.session.sessionUser._id
       User.findByIdAndUpdate(userId, {$push: {workouts: createdWorkout._id}}).exec()
         .then((updatedUser) => {
           console.log('Updated User:', updatedUser)
+          req.session.workoutExercises = []
           res.redirect('/home')
         })
     })

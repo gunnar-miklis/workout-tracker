@@ -41,6 +41,11 @@ button{
   font: inherit;
   transition: var(--standard-transition);
 }
+hr{
+  color: var(--secondary-text-color);
+  background-color: var(--secondary-text-color);
+  border-color: var(--secondary-text-color);
+}
 /*☝ End of basic styles*/
 /*👇 Start of generic classes*/
 .standard-button{
@@ -50,6 +55,7 @@ button{
   box-shadow: var(--standard-shadow);
   background-color: var(--element-color-3);
   color: var(--secondary-text-color);
+  text-align: center;
   cursor: pointer;
 }
 .standard-button:hover, .standard-button:focus{
@@ -64,6 +70,7 @@ button{
   box-shadow: var(--standard-shadow);
   background-color: var(--main-color-2-transparent);
   text-transform: uppercase;
+  text-align: center;
   font-weight: 500;
   color: var(--main-color-2);
   cursor: pointer;

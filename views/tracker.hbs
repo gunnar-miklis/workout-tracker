@@ -18,12 +18,14 @@
       </tr>
     </tbody>
   </table> --}}
-
+  <p class="secondary-text">Add your exercises here: </p>
   <div id="exercises-container" class="flex-column-center">
 
   </div>
   <button class="standard-button" onclick="addExerciseForm()">Add Exercise</button>
-  <form action="/saveworkout" method="POST">
-    <input class="standard-input" type="text" name="title" placeholder="workout title">
-    <button class="main-button" type="submit">Save Workout</button>
+  <hr>
+  <p class="secondary-text">When you are done: Name and finish your workout.</p>
+  <form class="flex-row-between" action="/saveworkout" method="POST">
+    <input class="standard-input" type="text" name="title" placeholder="workout title" required>
+    <button class="main-button" type="submit">Finish Workout</button>
   </form>
