@@ -37,6 +37,7 @@ function addExerciseForm() {
 
   // Add the form fields to the new form element
   newForm.innerHTML = `
+  <form action="/tracker" method="POST">
     <div class="flex-row-between">
       <input class="standard-input" type="text" name="title" placeholder="Name of Exercise">
       <select class="standard-input" name="type" onchange="showInputs(this)">
@@ -54,6 +55,7 @@ function addExerciseForm() {
         <input name="distance" class="standard-input hide" type="number" min="0" placeholder="km">
       <button class="main-button" type="submit">Track</button>
     </div>
+  </form>
   `;
 
   // Append the new form element to the exercises-container div

@@ -16,4 +16,9 @@ router.get( '/tracker', isLoggedIn, ( req, res, next ) => {
 		.catch( ( err ) => next( err ) );
 } );
 
+router.post('/tracker', isLoggedIn, (req, res, next) => {
+  const {title, rep, weight, time, distance} = req.body
+  Workout.create()
+})
+
 module.exports = router;
