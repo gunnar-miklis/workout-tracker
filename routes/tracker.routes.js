@@ -6,7 +6,7 @@ const isLoggedIn = require( '../utils/isLoggedIn' );
 const User = require('../models/User.model');
 const session = require('express-session');
 
-// NOTE: tracker
+
 router.get( '/tracker', isLoggedIn, ( req, res, next ) => {
   res.render('tracker')
 })
