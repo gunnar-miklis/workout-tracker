@@ -2,6 +2,7 @@ const express = require( 'express' );
 const router = express.Router();
 const bcrypt = require( 'bcryptjs' );
 const User = require( '../models/User.model' );
+const isLoggedIn = require( '../utils/isLoggedIn' );
 
 // NOTE: Signup Page
 router.get( '/signup', ( req, res, next ) => {
@@ -49,8 +50,10 @@ router.post( '/signup', ( req, res, next ) => {
 									const sessionUser = {
 										_id: userFromDb.id,
 										username: userFromDb.username,
+										role: userFromDb.role,
 									};
 									req.session.sessionUser = sessionUser;
+									// redirect to welcome page
 									res.redirect( 'auth/welcome' );
 								} )
 								.catch( ( err ) => next( err ) );
@@ -73,15 +76,16 @@ router.post( '/login', ( req, res, next ) => {
 		.then( ( userFromDb ) => {
 			// if user is in database
 			if ( userFromDb ) {
-				// compare password
+				// compare input-password with database-hash
 				if ( bcrypt.compareSync( password, userFromDb.password ) ) {
-					// create session
+					// if matching :>> create session
 					const sessionUser = {
 						_id: userFromDb.id,
 						username: userFromDb.username,
+						role: userFromDb.role,
 					};
 					req.session.sessionUser = sessionUser;
-					// redirect to user page
+					// redirect to home page
 					res.redirect( 'home' );
 				} else {
 					res.render( 'auth/login', { message: 'Wrong Credentials' } );
@@ -94,18 +98,16 @@ router.post( '/login', ( req, res, next ) => {
 } );
 
 // NOTE: Logout Page
-router.get( '/logout', ( req, res, next )=> {
+router.get( '/auth/logout', ( req, res, next ) => {
+	// destroy session
 	req.session.destroy( ( err ) => {
 		if ( err ) next( err );
-		res.redirect( 'auth/logout' );
+		res.render( 'auth/logout' );
 	} );
-} );
-router.get( '/auth/logout', ( req, res, next ) => {
-	res.render( 'auth/logout' );
 } );
 
 // NOTE: Welcome Page
-router.get( '/welcome', ( req, res, next ) => {
+router.get( '/welcome', isLoggedIn, ( req, res, next ) => {
 	res.render( 'auth/welcome' );
 } );
 
