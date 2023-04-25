@@ -12,11 +12,6 @@ const exerciseSchema = new Schema(
 			type: String,
 			trim: true,
 		},
-		type: {
-			type: String,
-			enum: ['rep', 'weight', 'time'],
-			required: true,
-		},
 		distance: {
 			type: Number,
 			default: 0,
@@ -29,12 +24,10 @@ const exerciseSchema = new Schema(
 			type: Number,
 			default: 0,
 		},
-		repWeight: [
-			{
-				rep: { type: String, default: 0 },
-				weight: { type: String, default: 0 },
-			},
-		],
+		weight: {
+			type: Number,
+			default: 0,
+		},
 	},
 	{
 		timestamps: true,

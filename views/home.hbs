@@ -4,6 +4,9 @@
 <p class="secondary-text">Start workout from template</p>
 <a href='/tracker' class="main-button"> Track Workout </a>
 
+<p>Workouts in total: {{totalWorkouts}}</p>
+<p>Active Days: {{activeDays}}</p>
+
 <ul class="workouts-ul">
 	{{#each pastWorkouts}}
 		<details class="container">
@@ -13,13 +16,11 @@
 			</div>
 			<div class="text-container">
 				<h3>{{title}}</h3>
-				<p>{{description}}</p>
-				<p>{{duration}} minutes</p>
-				<p>{{date}} minutes</p>
+				<p>{{formatDate date}}</p>
 			</div>
 			</summary>
+				<p><i>{{description}}</i></p>
 				<table>
-					<caption>Exercises</caption>
 					<thead>
 						<tr>
 							<th>Exercise</th>
@@ -31,18 +32,19 @@
 						</tr>
 					</thead>
 					<tbody>
+						{{#each exercises}}
 						<tr>
-							{{#each exercises}}
-								<td>{{title}}</td>
-								<td>{{type}}</td>
-								<td>{{time}}</td>
-								<td>{{rep}}</td>
-								<td>{{repWeight}}</td>
-								<td>{{distance}}</td>
-							{{/each}}
+							<td>{{title}}</td>
+							<td>{{type}}</td>
+							<td>{{time}}</td>
+							<td>{{rep}}</td>
+							<td>{{repWeight}}</td>
+							<td>{{distance}}</td>
 						</tr>
+						{{/each}}
 					</tbody>
 				</table>
+				<p>Duration: {{duration}} minutes</p>
 		</details>
 	{{/each}}
 </ul>
