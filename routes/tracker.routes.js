@@ -5,7 +5,7 @@ const Exercise = require('../models/Exercise.model')
 const isLoggedIn = require( '../utils/isLoggedIn' );
 
 // NOTE: tracker
-router.get( '/tracker/:id', isLoggedIn, ( req, res, next ) => {
+router.get( '/tracker', isLoggedIn, ( req, res, next ) => {
 	const workoutId = req.params.id;
 
 	Workout.findById( workoutId )
