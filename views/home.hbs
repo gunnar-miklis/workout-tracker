@@ -1,6 +1,6 @@
 <body class="flex-column-center">
 
-<h1>Welcome {{user.username}}</h1>
+<h1>Welcome {{username}}</h1>
 <p class="secondary-text">Start workout from template</p>
 <a href='/tracker' class="main-button"> Track Workout </a>
 
@@ -20,30 +20,7 @@
 			</div>
 			</summary>
 				<p><i>{{description}}</i></p>
-				<table>
-					<thead>
-						<tr>
-							<th>Exercise</th>
-							<th>Type</th>
-							<th>Time</th>
-							<th>Rep</th>
-							<th>Weight</th>
-							<th>Distance</th>
-						</tr>
-					</thead>
-					<tbody>
-						{{#each exercises}}
-						<tr>
-							<td>{{title}}</td>
-							<td>{{type}}</td>
-							<td>{{time}}</td>
-							<td>{{rep}}</td>
-							<td>{{repWeight}}</td>
-							<td>{{distance}}</td>
-						</tr>
-						{{/each}}
-					</tbody>
-				</table>
+				{{> exerciseTable this}}
 				<p>Duration: {{duration}} minutes</p>
 		</details>
 	{{/each}}

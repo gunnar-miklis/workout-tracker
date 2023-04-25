@@ -18,8 +18,7 @@ const getActiveDays = ( workouts ) => {
 
 // NOTE: home
 router.get( '/home', isLoggedIn, ( req, res, next ) => {
-	const user = req.session.sessionUser;
-	const username = user.username;
+	const username = req.session.sessionUser.username;
 
 	User.findOne( { username } )
 		.populate( 'workouts' )
@@ -30,10 +29,11 @@ router.get( '/home', isLoggedIn, ( req, res, next ) => {
 			},
 		} )
 		.then( ( userFromDb ) => {
+			console.log( 'userFromDb :>> ', userFromDb );
 			const pastWorkouts = userFromDb.workouts;
 			const totalWorkouts = pastWorkouts.length;
 			const activeDays = getActiveDays( pastWorkouts );
-			res.render( 'home', { pastWorkouts, totalWorkouts, activeDays, user } );
+			res.render( 'home', { pastWorkouts, totalWorkouts, activeDays, username } );
 		} )
 		.catch( ( err ) => next( err ) );
 } );
