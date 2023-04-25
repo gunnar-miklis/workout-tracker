@@ -5,7 +5,7 @@ const User = require( '../models/User.model' );
 const isLoggedIn = require( '../utils/isLoggedIn' );
 const Exercise = require( '../models/Exercise.model' );
 
-// function to calculate the active days
+// NOTE: function to calculate the active days
 const getActiveDays = ( workouts ) => {
 	// create an array only with the dates
 	const workoutDates = [];
