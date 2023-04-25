@@ -3,6 +3,18 @@ const router = express.Router();
 const Workout = require( '../models/Workout.model' );
 const User = require( '../models/User.model' );
 const isLoggedIn = require( '../utils/isLoggedIn' );
+const Exercise = require( '../models/Exercise.model' );
+
+const getActiveDays = ( workouts ) => {
+	const workoutDates = [];
+	workouts.forEach( ( workout ) => workoutDates.push( workout.date ) );
+
+	const convertedDates = workoutDates.map( ( date ) => date.toISOString().slice( 0, 10 ) );
+	const uniqueDates = [...new Set( convertedDates )];
+	const datesConvertedBack = uniqueDates.map( ( dateString ) => new Date( dateString ) );
+
+	return datesConvertedBack.length;
+};
 
 // NOTE: home
 router.get( '/home', isLoggedIn, ( req, res, next ) => {
@@ -18,13 +30,10 @@ router.get( '/home', isLoggedIn, ( req, res, next ) => {
 			},
 		} )
 		.then( ( userFromDb ) => {
-			console.log( 'USER :>> ', user );
-
 			const pastWorkouts = userFromDb.workouts;
-			console.log( 'pastWorkouts :>> ', pastWorkouts );
-
-			// Workout.findById( {} )
-			res.render( 'home', { pastWorkouts, user } );
+			const totalWorkouts = pastWorkouts.length;
+			const activeDays = getActiveDays( pastWorkouts );
+			res.render( 'home', { pastWorkouts, totalWorkouts, activeDays, user } );
 		} )
 		.catch( ( err ) => next( err ) );
 } );

@@ -23,7 +23,10 @@ const exerciseSchema = new Schema(
 			type: Number,
 			default: 0,
 		},
-		weight: Number
+		weight: {
+			type: Number,
+			default: 0,
+		},
 	},
 	{
 		timestamps: true,
