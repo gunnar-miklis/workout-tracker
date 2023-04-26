@@ -5309,6 +5309,29 @@ const exercisesList = [
 	},
 ];
 
-module.exports = {
-  exercisesList
-};
+// module.exports = {
+//   exercisesList
+// };
+
+const searchInput = document.querySelector('#search-input');
+console.log('Exercise search js file')
+
+searchInput.addEventListener("input", function() {
+  console.log('input')
+  const inputValue = searchInput.value
+  const filteredData = exercisesList.filter(function(exercise) {
+    return item.name.includes(inputValue);
+  });
+  displaySuggestions(filteredData);
+});
+
+function displaySuggestions(filteredData) {
+  const suggestionsList = document.getElementById("suggestionsList");
+  suggestionsList.innerHTML = "";
+
+  filteredData.forEach(function(item) {
+    const li = document.createElement("li");
+    li.innerText = item.name;
+    suggestionsList.appendChild(li);
+  });
+}

@@ -5,7 +5,7 @@ const Exercise = require('../models/Exercise.model')
 const isLoggedIn = require( '../utils/isLoggedIn' );
 const User = require('../models/User.model');
 const session = require('express-session');
-
+const exercisesList = require('../db/list-of-exercises').exercisesList
 
 router.get( '/tracker', isLoggedIn, ( req, res, next ) => {
   res.render('tracker')
@@ -14,9 +14,7 @@ router.get( '/tracker', isLoggedIn, ( req, res, next ) => {
 router.post('/tracker', (req, res, next) => {
   const {title, rep, weight, time, distance} = req.body
 
-  const exercises = ['push up', 'pull up']
-  
-  if(!exercises.includes(title)){
+  if(!exercisesList.some((exercise) => exercise.name === title)){
     res.render('tracker', { message: 'Exercise not found'})
     return
   }
