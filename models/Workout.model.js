@@ -6,7 +6,6 @@ const workoutSchema = new Schema(
 			type: String,
 			trim: true,
 			required: false,
-			unique: true,
 		},
 		description: {
 			type: String,

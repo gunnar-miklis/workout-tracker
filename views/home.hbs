@@ -63,7 +63,7 @@
 							<h2><strong>{{title}}</strong></h2>
 							<h4>Do you really want to delete this Workout?</h4>
 						</div>
-						<form id="{{_id}}" action="/delete" method="POST">
+						<form id="{{_id}}" action="/delete" method="POST" class="add-space-before">
 							<label for="id"hidden>{{_id}}</label>
 							<input name="id" value="{{_id}}" hidden>
 							<button class="main-button">YES</button>

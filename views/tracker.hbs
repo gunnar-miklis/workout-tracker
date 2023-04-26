@@ -1,49 +1,42 @@
 <body class="flex-column-center">
 <script type="text/javascript" src="/js/input-selection.js"></script>
+<script>
+	document.querySelector('#finish-workout-button').addEventListener('click', () => {
+		document.querySelector('input[name="duration"]').value = document.querySelector('#timer').innerText
+	})
+</script>
+<script type="text/javascript" src="/js/timer.js"></script>
 
-<a href="/home">← Cancel Workout</a>
+
 <div class="timer-container flex-column-center">
   <span id="timer"></span>
   <button id="timer-control-button">II</button>
 </div>
-<script type="text/javascript" src="/js/timer.js"></script>
 
 {{#if message}}
   {{message}}
 {{/if}}
-{{!-- <table>
-<thead>
-	<tr>
-	<th>Exercise</th>
-	<th>reps</th>
-	<th>kg</th>
-	<th>min</th>
-	<th>km</th>
-	</tr>
-</thead>
-<tbody class="completed-exercises">
-	<tr>
-	
-	</tr>
-</tbody>
-</table> --}}
-<p class="secondary-text">Add your exercises here: </p>
-<div id="exercises-container" class="flex-column-center">
-</div>
-<button class="standard-button" onclick="addExerciseForm()">Add Exercise</button>
 
-<hr>
+{{#if previousWorkoutExercises}}
+	<div class="container flex-column">
+		{{> exerciseTable previousWorkoutExercises}}
+	</div>
+{{/if}}
 
-<p class="secondary-text">When you are done: Name and finish your workout.</p>
-<form class="flex-row-between" action="/saveworkout" method="POST">
-	<input class="standard-input" type="text" name="title" placeholder="workout title" required>
-  <input type="text" name="duration" style="display: none">
-<button id="finish-workout-button" class="main-button" type="submit">Finish Workout</button>
+<div id="exercises-container" class="flex-column-center"></div>
+<button class="main-button" onclick="addExerciseForm()" type="button">Add a new Exercise</button>
 
-<script>
-  document.querySelector('#finish-workout-button').addEventListener('click', () => {
-    document.querySelector('input[name="duration"]').value = document.querySelector('#timer').innerText
-  })
-</script>
+<hr class="add-space-before add-space-after">
+
+<form id="finish-workout" class="flex-column" action="/saveworkout" method="POST">
+	<input class="standard-input" type="text" name="title" placeholder="title" required>
+	<input class="standard-input" type="text" name="description" placeholder="description">
+  	<input type="text" name="duration" hidden>
+	<button id="finish-workout-button" class="main-button" type="submit" for="finish-workout">Finish and Save Workout</button>
 </form>
+
+<form id="abort-workout" class="flex-column" action="/abort" method="POST">
+	<button class="standard-button" for="abort-workout">Abort without saving</button>
+</form>
+
 
