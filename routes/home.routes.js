@@ -80,15 +80,32 @@ router.get( '/home', isLoggedIn, ( req, res, next ) => {
 // NOTE: delete workout
 router.post( '/delete', ( req, res, next ) => {
 	const workoutId = req.body.id;
+	const userId = req.session.sessionUser._id;
 
-	// Only for logging
-	// Workout.findById( { _id: workoutId } )
-	// 	.then( ( result ) => console.log( result._id ) )
-	// 	.catch( ( err ) => next( err ) );
+	User.findById( userId )
+		.then( ( userFromDb ) => {
+			const userWorkouts = userFromDb.workouts;
 
-	Workout.findByIdAndDelete( { _id: workoutId } )
-		.then( () => res.redirect( '/home' ) )
-		.catch( ( err ) => next( err ) );
+			// find the matching workout id
+			userWorkouts.forEach( ( workout ) => {
+				if ( workout.toString() === workoutId ) {
+					// get the index
+					const workoutIdx = userFromDb.workouts.indexOf( workout );
+					// slice the array at index position, aka remove this index
+					const userWorkoutsUpdate = userFromDb.workouts.splice( workoutIdx, 1 );
+
+					// update the user: remove the workout from the user
+					User.findByIdAndUpdate( userId, { workouts: userWorkoutsUpdate }, { new: true } )
+						.then( ( x ) => console.log( 'x :>> ', x ) )
+						.catch( ( err ) => next( err ) );
+
+					// remove the workout form the workout collection
+					Workout.findByIdAndDelete( { _id: workoutId } )
+						.then( () => res.redirect( '/home' ) )
+						.catch( ( err ) => next( err ) );
+				}
+			} );
+		} );
 } );
 
 // TODO: exercise list
