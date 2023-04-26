@@ -49,13 +49,14 @@ const authRoutes = require( './routes/auth.routes' );
 const homeRoutes = require( './routes/home.routes' );
 const trackerRoutes = require( './routes/tracker.routes' );
 const statisticsRoutes = require('./routes/statistics.routes')
-
+const profileRoutes = require('./routes/profile.routes')
 // const statisticsRoutes = require( './routes/statistics.routes' );
 app.use( '/', indexRoutes );
 app.use( '/', authRoutes );
 app.use( '/', homeRoutes );
 app.use( '/', trackerRoutes );
 app.use( '/', statisticsRoutes)
+app.use( '/', profileRoutes)
 // app.use( '/', statisticsRoutes );
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes

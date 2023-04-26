@@ -5,7 +5,13 @@
     localStorage.clear('timeInSeconds')
   }
 </script>
-
+<nav>
+  <ul class="flex-row-center">
+    <li><a class="active" href="/home">Home</a></li>
+    <li><a href="/statistics">Statistics</a></li>
+    <li><a href="/profile">Profile</a></li>
+  </ul>
+</nav>
 <div class="flex-column-center center-text add-space-after">
 	<h1 class="add-space-before">Welcome {{username}}</h1>
 	<p><span class="showcase">{{totalWorkouts}}</span> Total Workouts</p>
