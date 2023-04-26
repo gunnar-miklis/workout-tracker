@@ -22,6 +22,7 @@
   --standard-font-size: 14pt;
 }
 html{
+  min-height: 100vh;
   font-family: var(--standard-font-family);
   font-size: var(--standard-font-size);
   color: var(--primary-text-color);
@@ -150,7 +151,7 @@ strong {
 /*👇 Start of Sign Up Form*/
 .mobile-wrapper{
   box-sizing: border-box;
-  height: 100vh;
+  min-height: 100vh;
   width: 600px;
   max-width: 100%;
   border-right: 1px solid var(--element-color-3);
