@@ -1,5 +1,5 @@
 <body class="flex-column-center">
-<script type="text/javascript" src="/js/delete-confirmation.js"></script>
+<script type="text/javascript" src="/js/delete-confirmation.js" defer></script>
 
 <h1>Welcome {{username}}</h1>
 <p class="secondary-text">Start tracking your workout!</p>
@@ -28,7 +28,17 @@
 					</ul>
 				</div>
 				<div>
-					<button class="logout" onclick="deleteWorkout()">Delete this Workout 🗑️</button>
+					<button class="logout" onclick="document.querySelector('.delete-confirmation').style.display='flex'">Delete this Workout 🗑️ {{_id}}</button>
+					<div class="delete-confirmation">
+						<div>
+							<h2>Do you really want to delete this Workout?</h2>
+						</div>
+						<form action="/delete" method="POST">
+							<input name="id" value="{{_id}}" hidden>
+							<button class="main-button" type="submit">YES</button>
+							<a class="standard-button" onclick="document.querySelector('.delete-confirmation').style.display='none'">NO</a>
+						</form>
+					</div>
 				</div>
 		</details>
 	{{/each}}
