@@ -58,7 +58,7 @@ function addExerciseForm() {
   newForm.innerHTML = `
   <form action='/tracker' method='POST'>
     <div class="flex-row-between">
-      <input class="standard-input" type="text" name="title" placeholder="Name of Exercise" required>
+      <input id="search-input" class="standard-input" type="text" name="title" placeholder="Name of Exercise" required>
       <select class="standard-input" name="type" onchange="showInputs(this)" required>
         <option value="" disabled selected>Select Type</option>
         <option value="rep">reps</option>
@@ -74,6 +74,7 @@ function addExerciseForm() {
         <input name="distance" class="standard-input hide" type="number" min="0" placeholder="km">
         <button class="main-button" type="submit">Track</button>
     </div>
+    <script type="text/javascript" src="/js/exercise-search.js"></script>
   </form>
   `;
   newForm.setAttribute('action', '/tracker')
