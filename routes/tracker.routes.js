@@ -32,9 +32,9 @@ router.post('/tracker', (req, res, next) => {
 
 
 router.post('/saveworkout', (req, res, next) => {
-  const {title} = req.body
+  const {title, duration} = req.body
   const exercises = req.session.workoutExercises || [] // initialize the array if it's undefined
-  Workout.create({title, date: new Date(), exercises}) 
+  Workout.create({title, duration, date: new Date(), exercises}) 
     .then(createdWorkout => {
       const userId = req.session.sessionUser._id
       User.findByIdAndUpdate(userId, {$push: {workouts: createdWorkout._id}}).exec()

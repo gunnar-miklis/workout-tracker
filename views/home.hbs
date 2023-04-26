@@ -1,5 +1,10 @@
 <body class="flex-column-center">
 <script type="text/javascript" src="/js/delete-confirmation.js" defer></script>
+<script>
+  function startNewTimer(){
+    localStorage.clear('timeInSeconds')
+  }
+</script>
 
 <div class="flex-column-center center-text add-space-after">
 	<h1 class="add-space-before">Welcome {{username}}</h1>
@@ -9,7 +14,8 @@
 </div>
 
 <div class="flex-column-center center-text add-space-after">
-	<a href='/tracker' class="main-button track-button"> Track Workout </a>
+	<a href='/tracker' class="main-button track-button" onclick="startNewTimer()"> Track Workout </a>
+  
 	<p class="secondary-text text-hint">Click to start a new Workout!</p>
 </div>
 
