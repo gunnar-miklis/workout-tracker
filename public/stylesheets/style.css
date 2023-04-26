@@ -86,14 +86,15 @@ strong {
   color: var(--element-color-1);
 }
 .standard-input{
-  width: 100%;
-  border: 1px solid var(--secondary-text-color);
-  border-radius: var(--standard-border-radius);
-  padding: 12px;
-  background-color: rgba(0, 0, 0, 0.5);
-  font: inherit;
-  color: var(--primary-text-color);
-  transition: var(--standard-transition);
+	box-sizing: border-box;
+	width: 100%;
+	border: 1px solid var(--secondary-text-color);
+	border-radius: var(--standard-border-radius);
+	padding: 12px;
+	background-color: rgba(0, 0, 0, 0.5);
+	font: inherit;
+	color: var(--primary-text-color);
+	transition: var(--standard-transition);
 }
 .standard-input::placeholder{
   color: var(--secondary-text-color);
@@ -226,7 +227,7 @@ input[name="password"]:focus ~ .password-validation-ul{
   flex-direction: column;
 }
 .container.exercise input{  
-  width: 60px;
+  width: 100px;
 }
 .container.exercise input[name="title"]{
   width: unset;
@@ -342,4 +343,34 @@ span.showcase {
 .text-hint {
 	font-style: italic;
 	font-size: 80%;
+}
+.autocomplete {
+	position: relative;
+}
+.autocomplete-items {
+	position: absolute;
+	border: 1.5px solid var(--main-color-1);
+	border-radius: var(--standard-border-radius);
+	border-bottom: none;
+	border-top: none;
+	z-index: 99;
+	/*position the autocomplete items to be the same width as the container:*/
+	top: 100%;
+	left: 0;
+}
+.autocomplete-items div {
+	padding: 10px;
+	cursor: pointer;
+	background-color: var(--element-color-1);
+	border-top: 1.5px solid var(--secondary-text-color);
+	border-bottom: 1.5px solid var(--secondary-text-color);
+}
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+	background-color: var(--secondary-text-color);
+}
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+	background-color: var(--secondary-text-color) !important; 
+	color: var(--primary-text-color);
 }
