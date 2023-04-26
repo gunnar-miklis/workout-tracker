@@ -289,3 +289,22 @@ thead, tbody {
 ul.summary {
 	list-style-position: inside;
 }
+.delete-confirmation {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(0,0,0,0.8);
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 99;
+}
+.delete-confirmation div:first-child{
+	margin-top: -100px;
+	margin-bottom: 15px;
+	max-width: 400px;
+	text-align: center;
+}
