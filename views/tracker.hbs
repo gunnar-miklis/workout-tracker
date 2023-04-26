@@ -1,7 +1,13 @@
 <body class="flex-column-center">
-
 <script type="text/javascript" src="/js/input-selection.js"></script>
+
 <a href="/home">← Cancel Workout</a>
+<div class="timer-container flex-column-center">
+  <span id="timer">00:00:00</span>
+  <button id="timer-control-button">II</button>
+</div>
+<script type="text/javascript" src="/js/timer.js"></script>
+
 {{#if message}}
   {{message}}
 {{/if}}
@@ -31,6 +37,13 @@
 <p class="secondary-text">When you are done: Name and finish your workout.</p>
 <form class="flex-row-between" action="/saveworkout" method="POST">
 	<input class="standard-input" type="text" name="title" placeholder="workout title" required>
-<button class="main-button" type="submit">Finish Workout</button>
+  <input type="text" name="duration" style="display: none">
+<button id="finish-workout-button" class="main-button" type="submit">Finish Workout</button>
+
+<script>
+  document.querySelector('#finish-workout-button').addEventListener('click', () => {
+    document.querySelector('input[name="duration"]').value = document.querySelector('#timer').innerText
+  })
+</script>
 </form>
 

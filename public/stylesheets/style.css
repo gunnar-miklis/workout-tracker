@@ -223,6 +223,22 @@ input[name="password"]:focus ~ .password-validation-ul{
 .container.exercise input[name="title"]{
   width: unset;
 }
+.timer-container{
+  height: 250px;
+  background-color: black;
+}
+#timer{
+  font-size: 3rem;
+  font-family: Consolas;
+}
+#timer-control-button{
+  height: 50px;
+  width: 50px;
+  font-size: 20pt;
+  border-radius: 100%;
+  border: none;
+  cursor: pointer;
+}
 /* =======================================
  *  STATISTICS
  * ======================================= */
