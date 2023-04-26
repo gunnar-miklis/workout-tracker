@@ -3,8 +3,8 @@ const router = express.Router();
 const Workout = require( '../models/Workout.model' );
 const User = require( '../models/User.model' );
 const isLoggedIn = require( '../utils/isLoggedIn' );
-const colors = require( 'colors' );
-colors.setTheme( { log: 'bgBrightYellow' } );
+const c = require( 'colors' );
+c.setTheme( { log: 'bgBrightYellow' } );
 
 // NOTE: function to calculate the active days
 const getActiveDays = ( workouts ) => {
@@ -34,10 +34,12 @@ const prepareExercises = ( workouts ) => {
 	// sort exercises by name
 	exercises.sort( ( a, b )=> a.title.localeCompare( b.title ) );
 
+	// TODO
 	// if duplicate...
 	// increase counter
 	// sum values
 	// delete duplicate / return unique
+	// OR do a chart with these data
 	return exercises;
 };
 
@@ -68,7 +70,7 @@ router.get( '/home', isLoggedIn, ( req, res, next ) => {
 				const summarizedExercises = {};
 				summarizedExercises.exercises = prepareExercises( pastWorkouts );
 				summarizedExercises.totalExercises = summarizedExercises.exercises.length;
-				console.log( colors.log( 'summarizedExercises :>> ' ), summarizedExercises );
+				console.log( c.log( 'summarizedExercises :>> ' ), summarizedExercises );
 
 				res.render( 'home', { pastWorkouts, totalWorkouts, summarizedExercises, activeDays, username: 'ADMIN' } );
 			} )
@@ -104,6 +106,7 @@ router.get( '/home', isLoggedIn, ( req, res, next ) => {
 } );
 
 // NOTE: delete workout
+// FIXME: can only delete one workout???
 router.post( '/delete', ( req, res, next ) => {
 	const workoutId = req.body.id;
 	const userId = req.session.sessionUser._id;
@@ -127,13 +130,14 @@ router.post( '/delete', ( req, res, next ) => {
 
 					// remove the workout form the workout collection
 					Workout.findByIdAndDelete( { _id: workoutId } )
-						.then( () => res.redirect( '/home' ) )
+						.then( ( result ) => {
+							res.redirect( '/home' );
+						} )
 						.catch( ( err ) => next( err ) );
 				}
 			} );
-		} );
+		} )
+		.catch( ( err ) => next( err ) );
 } );
-
-// TODO: exercise list
 
 module.exports = router;
