@@ -77,14 +77,20 @@ router.get( '/home', isLoggedIn, ( req, res, next ) => {
 	}
 } );
 
-
 // NOTE: delete workout
 router.post( '/delete', ( req, res, next ) => {
 	const workoutId = req.body.id;
+
+	// Only for logging
+	// Workout.findById( { _id: workoutId } )
+	// 	.then( ( result ) => console.log( result._id ) )
+	// 	.catch( ( err ) => next( err ) );
 
 	Workout.findByIdAndDelete( { _id: workoutId } )
 		.then( () => res.redirect( '/home' ) )
 		.catch( ( err ) => next( err ) );
 } );
+
+// TODO: exercise list
 
 module.exports = router;
