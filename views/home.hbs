@@ -1,21 +1,40 @@
 <body class="flex-column-center">
 <script type="text/javascript" src="/js/delete-confirmation.js" defer></script>
-
-<h1>Welcome {{username}}</h1>
-<p class="secondary-text">Start tracking your workout!</p>
-<a href='/tracker' class="main-button" onclick="startNewTimer()"> Track Workout </a>
 <script>
   function startNewTimer(){
     localStorage.clear('timeInSeconds')
   }
 </script>
-<hr>
 
-<h2>Statistics</h2>
-<p>Total Workouts: <strong>{{totalWorkouts}}</strong></p>
-<p>Active Days: <strong>{{activeDays}}</strong></p>
+<div class="flex-column-center center-text add-space-after">
+	<h1 class="add-space-before">Welcome {{username}}</h1>
+	<p><span class="showcase">{{totalWorkouts}}</span> Total Workouts</p>
+	<p><span class="showcase">{{summarizedExercises.totalExercises}}</span> Total Exercises</p>
+	<p><span class="showcase">{{activeDays}}</span> Active Days</p>
+</div>
 
-<ul class="workouts-ul">
+<div class="flex-column-center center-text add-space-after">
+	<a href='/tracker' class="main-button track-button" onclick="startNewTimer()"> Track Workout </a>
+  
+	<p class="secondary-text text-hint">Click to start a new Workout!</p>
+</div>
+
+<hr class="add-space-before add-space-after">
+
+<h1>Progress</h1>
+
+<h2>Your Exercises</h2>
+<details class="container add-space-after">
+	<summary class="flex-row-between">
+		<h3>Show</h3>
+	</summary>
+		<div class="details flex-column">
+			{{> exerciseTable summarizedExercises}}
+		</div>
+</details>
+
+<h2>Your Workouts</h2>
+<ul class="workouts-ul add-space-after">
 	{{#each pastWorkouts}}
 		<details class="container">
 			<summary class="flex-row-between">
@@ -32,7 +51,7 @@
 					</ul>
 				</div>
 				<div>
-					<button class="logout" onclick="document.getElementById('{{_id}}').style.display = 'flex'">Delete Workout 🗑️</button>
+					<button class="logout add-space-before" onclick="document.getElementById('{{_id}}').style.display = 'flex'">Delete Workout 🗑️</button>
 					<div id="{{_id}}" class="delete-confirmation">
 						<div>
 							<h2><strong>{{title}}</strong></h2>
@@ -50,6 +69,4 @@
 	{{/each}}
 </ul>
 
-<hr>
-
-<a href="/auth/logout" class="logout">Logout</a>
+<a href="/auth/logout" class="logout add-space-before">Logout</a>

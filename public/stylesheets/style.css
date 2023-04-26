@@ -47,7 +47,6 @@ hr{
   color: var(--secondary-text-color);
   background-color: var(--secondary-text-color);
   border-color: var(--secondary-text-color);
-  margin: 30px 0;
 }
 strong {
 	color: var(--main-color-2);
@@ -141,8 +140,17 @@ strong {
 .flex-wrap{
   flex-wrap: wrap;
 }
+.add-space-after{
+	margin-bottom: 30px;
+}
+.add-space-before{
+	margin-top: 30px;
+}
 .secondary-text{
   color: var(--secondary-text-color);
+}
+.center-text {
+	text-align: center;
 }
 .hide{
   display: none;
@@ -295,7 +303,6 @@ thead, tbody {
 	color: var(--secondary-text-color);
 	text-align: center;
   	cursor: pointer;
-	margin: 30px 0 15px;
 }
 .logout:hover {
 	background-color: unset;
@@ -318,9 +325,21 @@ ul.summary {
 	align-items: center;
 	z-index: 99;
 }
-.delete-confirmation div:first-child{
+.delete-confirmation div:first-child {
 	margin-top: -100px;
-	margin-bottom: 15px;
 	max-width: 400px;
 	text-align: center;
+}
+.track-button {
+	padding: 50px;
+}
+span.showcase {
+	color: var(--main-color-2);
+	font-size: 220%;
+	font-weight: 100;
+	margin-right: 10px;
+}
+.text-hint {
+	font-style: italic;
+	font-size: 80%;
 }
