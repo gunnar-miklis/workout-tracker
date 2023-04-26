@@ -5,21 +5,36 @@ function showInputs(selectDropdown){
   switch (type){
     case 'rep':
       trackerInputs[0].classList.remove('hide')
-      trackerInputs[1].classList.add('hide')
       trackerInputs[2].classList.add('hide')
       trackerInputs[3].classList.add('hide')
+      trackerInputs[1].classList.add('hide')
+
+      trackerInputs[0].required = true
+      trackerInputs[1].required = false
+      trackerInputs[2].required = false
+      trackerInputs[3].required = false
       break;
     case 'weight':
       trackerInputs[0].classList.remove('hide')
       trackerInputs[1].classList.remove('hide')
       trackerInputs[2].classList.add('hide')
       trackerInputs[3].classList.add('hide')
+
+      trackerInputs[0].required = true
+      trackerInputs[1].required = true
+      trackerInputs[2].required = false
+      trackerInputs[3].required = false
       break;
     case 'time':
       trackerInputs[0].classList.add('hide')
       trackerInputs[1].classList.add('hide')
       trackerInputs[2].classList.remove('hide')
       trackerInputs[3].classList.add('hide')
+
+      trackerInputs[0].required = false
+      trackerInputs[1].required = false
+      trackerInputs[2].required = true
+      trackerInputs[3].required = false
       break;
     case 'distance':
       trackerInputs[0].classList.add('hide')
@@ -27,6 +42,10 @@ function showInputs(selectDropdown){
       trackerInputs[2].classList.remove('hide')
       trackerInputs[3].classList.remove('hide')
 
+      trackerInputs[0].required = false
+      trackerInputs[1].required = false
+      trackerInputs[2].required = true
+      trackerInputs[3].required = true
   }
 }
 function addExerciseForm() {
@@ -39,13 +58,13 @@ function addExerciseForm() {
   newForm.innerHTML = `
   <form action='/tracker' method='POST'>
     <div class="flex-row-between">
-      <input class="standard-input" type="text" name="title" placeholder="Name of Exercise">
-      <select class="standard-input" name="type" onchange="showInputs(this)">
-        <option selected disabled>Choose Inputs</option>
+      <input class="standard-input" type="text" name="title" placeholder="Name of Exercise" required>
+      <select class="standard-input" name="type" onchange="showInputs(this)" required>
+        <option value="" disabled selected>Select Type</option>
         <option value="rep">reps</option>
-        <option value="weight">reps x kg</option>
+        <option value="weight">reps and kg</option>
         <option value="time">time</option>
-        <option value="distance">time km</option>
+        <option value="distance">time and km</option>
       </select>
     </div>
     <div class="flex-row-center tracker-inputs">
