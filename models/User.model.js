@@ -30,6 +30,14 @@ const userSchema = new Schema(
 				ref: 'Workout',
 			},
 		],
+    weight: {
+      type: Number,
+      default: 0
+    },
+    height: {
+      type: Number,
+      default: 0
+    }
 	},
 	{
 		timestamps: true,

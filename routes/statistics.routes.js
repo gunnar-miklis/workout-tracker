@@ -8,7 +8,7 @@ const session = require('express-session');
 router.get('/statistics', isLoggedIn, (req, res, next) => {
 
   const userId = req.session.sessionUser._id
-
+  res.render('statistics')
   // User.findById(userId)
   //   .then(userFromDb => {
   //     res.render('statistics', {exercises: userFromDb.exercises})

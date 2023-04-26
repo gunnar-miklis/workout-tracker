@@ -51,6 +51,18 @@ hr{
 strong {
 	color: var(--main-color-2);
 }
+nav ul{
+  list-style: none;
+}
+nav a{
+  color: var(--primary-text-color);
+}
+nav a:hover{
+  color: var(--main-color-1);
+}
+nav a.active{
+  color: var(--main-color-2);
+}
 /*☝ End of basic styles*/
 /*👇 Start of generic classes*/
 .standard-button{
@@ -95,6 +107,9 @@ strong {
   color: var(--primary-text-color);
   transition: var(--standard-transition);
 }
+.standard-input.small{
+  width: 50px;
+}
 .standard-input::placeholder{
   color: var(--secondary-text-color);
   transition: var(--standard-transition);
@@ -108,6 +123,12 @@ strong {
 }
 .standard-input:focus::placeholder{
   color: var(--main-color-1);
+}
+.flex-column-start{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
 }
 .flex-column-center{
   display: flex;
@@ -145,6 +166,9 @@ strong {
 }
 .add-space-before{
 	margin-top: 30px;
+}
+.main-text{
+  color: var(--main-color-2);
 }
 .secondary-text{
   color: var(--secondary-text-color);
