@@ -3,7 +3,8 @@ const router = express.Router();
 const Workout = require( '../models/Workout.model' );
 const User = require( '../models/User.model' );
 const isLoggedIn = require( '../utils/isLoggedIn' );
-// const Exercise = require( '../models/Exercise.model' );
+const colors = require( 'colors' );
+colors.setTheme( { log: 'bgBrightYellow' } );
 
 // NOTE: function to calculate the active days
 const getActiveDays = ( workouts ) => {
@@ -18,6 +19,26 @@ const getActiveDays = ( workouts ) => {
 
 	// return the length
 	return datesConvertedBack.length;
+};
+
+// NOTE: exercises
+const prepareExercises = ( workouts ) => {
+	// push all exercises into one array
+	const exercises = [];
+	workouts.forEach( ( workout ) => {
+		workout.exercises.forEach( ( exercise ) => {
+			exercises.push( exercise );
+		} );
+	} );
+
+	// sort exercises by name
+	exercises.sort( ( a, b )=> a.title.localeCompare( b.title ) );
+
+	// if duplicate...
+	// increase counter
+	// sum values
+	// delete duplicate / return unique
+	return exercises;
 };
 
 // NOTE: home
@@ -43,8 +64,13 @@ router.get( '/home', isLoggedIn, ( req, res, next ) => {
 				const totalWorkouts = pastWorkouts.length;
 				// 4. get the active days via function
 				const activeDays = getActiveDays( pastWorkouts );
+				// 5. prepare exercises for the exercise-view
+				const summarizedExercises = {};
+				summarizedExercises.exercises = prepareExercises( pastWorkouts );
+				summarizedExercises.totalExercises = summarizedExercises.exercises.length;
+				console.log( colors.log( 'summarizedExercises :>> ' ), summarizedExercises );
 
-				res.render( 'home', { pastWorkouts, totalWorkouts, activeDays, username: 'ADMIN' } );
+				res.render( 'home', { pastWorkouts, totalWorkouts, summarizedExercises, activeDays, username: 'ADMIN' } );
 			} )
 			.catch( ( err ) => next( err ) );
 	} else {
