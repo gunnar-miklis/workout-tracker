@@ -14,6 +14,13 @@ router.get( '/tracker', isLoggedIn, ( req, res, next ) => {
 router.post('/tracker', (req, res, next) => {
   const {title, rep, weight, time, distance} = req.body
 
+  const exercises = ['push up', 'pull up']
+  
+  if(!exercises.includes(title)){
+    res.render('tracker', { message: 'Exercise not found'})
+    return
+  }
+
   Exercise.create({title, rep, weight, time, distance})
     .then((exercise) => {
       req.session.workoutExercises = Array.isArray(req.session.workoutExercises) ? req.session.workoutExercises : []
