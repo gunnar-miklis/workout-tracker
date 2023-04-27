@@ -435,3 +435,6 @@ ul.summary {
 }#bmi-form.hide{
   display: none;
 }
+.img-icon {
+	height: 15px;
+}
