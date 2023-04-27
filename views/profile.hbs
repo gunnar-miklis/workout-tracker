@@ -3,15 +3,17 @@
   function toggleBmiForm(){
     form = document.getElementById('bmi-form')
     form.classList.toggle('hide')
-
   }
 </script>
+
+<br>
 <h1>{{user.username}}</h1>
 <div class="flex-row-between">
-  <p>email: <span class="main-text">{{user.email}}</span></p>
+  <p><span class="main-text">{{user.email}}</span></p>
   <a href="/auth/logout" class="logout add-space-before">Logout</a>
 </div>
-<hr>
+
+<br>
 <div class="container flex-row-evenly-center home-details">
   <p class="center-text"> <span> <span class="big-text">{{user.weight}}</span>kg</span>weight</p>
   <p class="center-text"> <span> <span class="big-text">{{user.height}}</span>cm</span>height</p>
@@ -19,20 +21,16 @@
 <div class="container flex-row-center">
   <p class="medium-text">BMI: {{#if bmi}} <span class="main-text">{{bmi}}</span> {{/if}}</p>
 </div>
-<button class="standard-button" onclick="toggleBmiForm()">Add or edit your body data</button>
+
+<br>
+<button class="main-button" onclick="toggleBmiForm()">Add or edit your body data</button>
 <form id="bmi-form" class="hide" action="/bmi" method="POST">
   <input class="standard-input" type="number" name="weight" placeholder="kg"></p>
   <input class="standard-input" type="number" name="height" placeholder="cm"></p>
   <button class="main-button" type="submit">Save Changes</button>
 </form>
+<br>
+<br>
+<br>
 
-{{!-- <div class="container flex-row-evenly-center home-details">
-  <p class="secondary-text center-text"><span class="showcase">{{totalWorkouts}}</span> Total <br> Workouts</p>
-  <p class="secondary-text center-text"><span class="showcase">{{summarizedExercises.totalExercises}}</span> Total <br> Exercises</p>
-  <p class="secondary-text center-text"><span class="showcase">{{activeDays}}</span> Active <br> Days</p>
-</div> --}}
-
-<br>
-<br>
-<br>
 {{> navbar}}

@@ -4,24 +4,26 @@
     localStorage.clear('timeInSeconds')
   }
 </script>
-<h1>Hi, {{username}}!</h1>
-<header class="flex-column-start">
-  <div class="container flex-row-evenly-center home-details">
-    <p class="secondary-text center-text"><span class="big-text main-text">{{totalWorkouts}}</span> Total <br> Workouts</p>
-	  <p class="secondary-text center-text"><span class="big-text main-text">{{summarizedExercises.totalExercises}}</span> Total <br> Exercises</p>
-	  <p class="secondary-text center-text"><span class="big-text main-text">{{activeDays}}</span> Active <br> Days</p>
-  </div>
-</header>
 
 <br>
+<h1>Hi, {{username}}!</h1>
 <div class="flex-column-start">
-  <p class="center-text">Ready for your next workout?</p>
+	<p class="">Ready for your next workout?</p>
 	<a href='/tracker' class="main-button" onclick="startNewTimer()"> Start New Workout </a>
 </div>
 
 <br>
+<header class="flex-column-start">
+	<p>Your current Stats:</p>
+	<div class="container flex-row-evenly-center home-details">
+		<p class="secondary-text center-text"><span class="big-text main-text">{{totalWorkouts}}</span> Total <br> Workouts</p>
+		<p class="secondary-text center-text"><span class="big-text main-text">{{summarizedExercises.totalExercises}}</span> Total <br> Exercises</p>
+		<p class="secondary-text center-text"><span class="big-text main-text">{{activeDays}}</span> Active <br> Days</p>
+	</div>
+</header>
+
 {{#if mostRecentWorkout}}
-	<p>Most Recent Workout:</p>
+	<p>Most recent Workout:</p>
 	<ul class="workouts-ul add-space-after">
 			<details class="container">
 				<summary class="flex-column">
@@ -41,4 +43,5 @@
 <br>
 <br>
 <br>
+
 {{> navbar}}

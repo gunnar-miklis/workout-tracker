@@ -107,7 +107,7 @@ nav a.active{
   color: var(--element-color-1);
 }
 .main-button{
-  padding: 10px 20px;
+  padding: 15px 20px;
   border: 1.5px solid var(--main-color-2);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
@@ -133,8 +133,8 @@ nav a.active{
 	font: inherit;
 	color: var(--primary-text-color);
 	transition: var(--standard-transition);
-  flex-shrink: 1;
-  min-width: 70px;
+  	flex-shrink: 1;
+  	min-width: 70px;
 }
 .standard-input.small{
   max-width: 50px;
