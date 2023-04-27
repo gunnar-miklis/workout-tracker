@@ -7,14 +7,17 @@
   }
 </script>
 <h1>{{user.username}}</h1>
-<p>email: <span class="main-text">{{user.email}}</span></p>
+<div class="flex-row-between">
+  <p>email: <span class="main-text">{{user.email}}</span></p>
+  <a href="/auth/logout" class="logout add-space-before">Logout</a>
+</div>
 <hr>
 <div class="container flex-row-evenly-center home-details">
   <p class="center-text"> <span> <span class="big-text">{{user.weight}}</span>kg</span>weight</p>
   <p class="center-text"> <span> <span class="big-text">{{user.height}}</span>cm</span>height</p>
 </div>
 <div class="container flex-row-center">
-  <p class="medium-text">BMI: <span class="main-text">{{bmi}}</span></p>
+  <p class="medium-text">BMI: {{#if bmi}} <span class="main-text">{{bmi}}</span> {{/if}}</p>
 </div>
 <button class="standard-button" onclick="toggleBmiForm()">Edit Values</button>
 <form id="bmi-form" class="hide" action="/bmi" method="POST">
@@ -29,7 +32,7 @@
   <p class="secondary-text center-text"><span class="showcase">{{activeDays}}</span> Active <br> Days</p>
 </div> --}}
 
-<hr>
-<a href="/auth/logout" class="logout add-space-before">Logout</a>
-
+<br>
+<br>
+<br>
 {{> navbar}}

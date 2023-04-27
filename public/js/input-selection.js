@@ -5383,7 +5383,7 @@ function addExerciseForm() {
         <input name="weight" class="standard-input hide" type="number" min="0" placeholder="kg">
         <input name="time" class="standard-input hide" type="number" min="0" placeholder="min">
         <input name="distance" class="standard-input hide" type="number" min="0" placeholder="km">
-        <button class="main-button" type="submit">Track</button>
+        <button class="main-button" type="submit">✔</button>
     </div>
     <script type="text/javascript" src="/js/exercise-search.js"></script>
   </form>
