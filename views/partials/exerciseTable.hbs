@@ -2,20 +2,30 @@
 	<thead>
 		<tr>
 			<th>Exercise</th>
-			<th>Time</th>
-			<th>Rep</th>
-			<th>Weight</th>
-			<th>Distance</th>
+			<th>Time/Rep</th>
+			<th>Distance/Weight</th>
 		</tr>
 	</thead>
 	<tbody>
 		{{#each this.exercises}}
 		<tr>
 			<td>{{title}}</td>
-			<td>{{time}}</td>
-			<td>{{rep}}</td>
-			<td>{{weight}}</td>
-			<td>{{distance}}</td>
+
+			{{#if time}}
+				<td>{{time}} min</td>
+			{{/if}}
+
+			{{#if distance}}
+				<td>{{distance}} km</td>
+			{{/if}}
+
+			{{#if rep}}
+				<td>{{rep}} x</td>
+			{{/if}}
+
+			{{#if weight}}
+				<td>{{weight}} kg</td>
+			{{/if}}
 		</tr>
 		{{/each}}
 	</tbody>

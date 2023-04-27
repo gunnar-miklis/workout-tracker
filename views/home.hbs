@@ -12,28 +12,32 @@
 	  <p class="secondary-text center-text"><span class="big-text main-text">{{activeDays}}</span> Active <br> Days</p>
   </div>
 </header>
+
 <br>
 <div class="flex-column-start">
   <p class="center-text">Are you ready for a new workout?</p>
 	<a href='/tracker' class="main-button" onclick="startNewTimer()"> Start New Workout </a>
 </div>
+
 <br>
-<p>Most Recent Workout:</p>
-<ul class="workouts-ul add-space-after">
-		<details class="container">
-			<summary class="flex-column">
-				<h3>{{mostRecentWorkout.title}}</h3>
-				<div class="flex-row-between secondary-text">
-					<p><img src="../images/icons/clock-icon.png" class="img-icon"> {{mostRecentWorkout.duration}}</p>
-					<p>{{formatDate mostRecentWorkout.date}}</p>
-				</div>
-			</summary>
-				<div class="details flex-column">
-					<p><i>{{mostRecentWorkout.description}}</i></p>
-					{{> exerciseTable mostRecentWorkout}}
-				</div>
-		</details>
-</ul>
+{{#if mostRecentWorkout}}
+	<p>Most Recent Workout:</p>
+	<ul class="workouts-ul add-space-after">
+			<details class="container">
+				<summary class="flex-column">
+					<h3>{{mostRecentWorkout.title}}</h3>
+					<div class="flex-row-between secondary-text">
+						<p><img src="../images/icons/clock-icon.png" class="img-icon"> {{mostRecentWorkout.duration}}</p>
+						<p>{{formatDate mostRecentWorkout.date}}</p>
+					</div>
+				</summary>
+					<div class="details flex-column">
+						<p><i>{{mostRecentWorkout.description}}</i></p>
+						{{> exerciseTable mostRecentWorkout}}
+					</div>
+			</details>
+	</ul>
+{{/if}}
 <br>
 <br>
 <br>
