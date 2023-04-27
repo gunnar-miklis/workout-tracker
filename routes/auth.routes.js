@@ -4,6 +4,16 @@ const bcrypt = require( 'bcryptjs' );
 const User = require( '../models/User.model' );
 const isLoggedIn = require( '../utils/isLoggedIn' );
 
+// NOTE: create a session for the user
+const createUserSession = ( req, user ) => {
+	const sessionUser = {
+		_id: user._id,
+		username: user.username,
+		role: user.role,
+	};
+	req.session.sessionUser = sessionUser;
+};
+
 // NOTE: Signup Page
 router.get( '/signup', ( req, res, next ) => {
 	res.render( 'auth/signup' );
@@ -47,12 +57,7 @@ router.post( '/signup', ( req, res, next ) => {
 							User.create( { username: username, email: email, password: hash } )
 								.then( ( newUser ) => {
 									// create session
-									const sessionUser = {
-										_id: newUser._id,
-										username: newUser.username,
-										role: newUser.role,
-									};
-									req.session.sessionUser = sessionUser;
+									createUserSession( req, newUser );
 									// redirect to welcome page
 									res.redirect( '/welcome' );
 								} )
@@ -84,12 +89,7 @@ router.post( '/login', ( req, res, next ) => {
 				// compare input-password with database-hash
 				if ( bcrypt.compareSync( password, userFromDb.password ) ) {
 					// if matching :>> create session
-					const sessionUser = {
-						_id: userFromDb._id,
-						username: userFromDb.username,
-						role: userFromDb.role,
-					};
-					req.session.sessionUser = sessionUser;
+					createUserSession( req, userFromDb );
 					// redirect to home page
 					res.redirect( 'home' );
 				} else {
