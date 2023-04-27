@@ -36,7 +36,7 @@ router.get( '/tracker', isLoggedIn, ( req, res, next ) => {
 router.post( '/tracker', ( req, res, next ) => {
 	const { title, rep, weight, time, distance } = req.body;
 
-	if ( !exercisesList.some( ( exercise ) => exercise.name === title ) ) {
+	if ( !exercisesList.some( ( exercise ) => exercise === title ) ) {
 		res.render( 'tracker', { message: 'Exercise not found' } );
 		return;
 	}
