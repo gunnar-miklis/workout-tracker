@@ -5,6 +5,7 @@
 }
 :root{
   --element-color-1: #13161B;
+  --element-color-15: #23242c;
   --element-color-2: #2C2E35;
   --element-color-3: #46484E;
 
@@ -13,7 +14,7 @@
   --main-color-2-transparent: #00fe8758;
 
   --primary-text-color: #f2f2f2;
-  --secondary-text-color: #a8aab7;
+  --secondary-text-color: #6B6D76;
 
   --standard-border-radius: 4px;
   --standard-shadow: 0 3px 5px 2px rgba(0, 0, 0, 0.125);
@@ -52,6 +53,7 @@ strong {
 	color: var(--main-color-2);
 }
 nav{
+  margin-top: 90px;
   width: 100%;
   background-color: var(--element-color-2);
   position: absolute;
@@ -66,6 +68,11 @@ nav a{
   color: var(--secondary-text-color);
   font-size: 10pt;
   flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
 }
 nav a img{
   height: 32px;
@@ -141,7 +148,6 @@ nav a.active{
 .flex-column-start{
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 10px;
 }
 .flex-column-center{
@@ -172,6 +178,12 @@ nav a.active{
   align-items: center;
   gap: 10px;
 }
+.flex-row-evenly-center{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
 .flex-wrap{
   flex-wrap: wrap;
 }
@@ -198,12 +210,12 @@ nav a.active{
 .mobile-wrapper{
   box-sizing: border-box;
   min-height: 100vh;
-  width: 600px;
+  width: 500px;
   max-width: 100%;
   border-right: 1px solid var(--element-color-3);
   border-left: 1px solid var(--element-color-3);
   padding: 10px;
-  background-color: var(--element-color-1);
+  background-image: linear-gradient(to right bottom, var(--element-color-15), var(--element-color-1));
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -245,7 +257,7 @@ input[name="password"]:focus ~ .password-validation-ul{
   width: 100%;
   box-shadow: var(--standard-shadow);
   background-color: var(--element-color-2);
-  border: 1.5px solid var(--element-color-3);
+  /* border: 1.5px solid var(--element-color-3); */
   border-radius: var(--standard-border-radius);
   color: var(--primary-text-color);
   gap: 10px;
@@ -370,13 +382,10 @@ ul.summary {
 	max-width: 400px;
 	text-align: center;
 }
-.track-button {
-	padding: 50px;
-}
 span.showcase {
 	color: var(--main-color-2);
-	font-size: 220%;
-	font-weight: 100;
+	font-size: 2.5rem;
+	font-weight: 500;
 	margin-right: 10px;
 }
 .text-hint {
@@ -412,4 +421,8 @@ span.showcase {
 .autocomplete-active {
 	background-color: var(--secondary-text-color) !important; 
 	color: var(--primary-text-color);
+}
+.home-details p{
+  display: flex;
+  flex-direction: column;
 }

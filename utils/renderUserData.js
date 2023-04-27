@@ -70,7 +70,7 @@ const renderUserData = ( route, req, res, next ) => {
 			summarizedExercises.exercises = prepareExercises( pastWorkouts );
 			summarizedExercises.totalExercises = summarizedExercises.exercises.length;
 
-			res.render( route, { pastWorkouts, totalWorkouts, summarizedExercises, activeDays } );
+			res.render( route, { pastWorkouts, totalWorkouts, summarizedExercises, activeDays, username } );
 		} )
 		.catch( ( err ) => next( err ) );
 };
