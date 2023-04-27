@@ -1,6 +1,8 @@
 const express = require( 'express' );
 const router = express.Router();
 const User = require( '../models/User.model' );
+const c = require( 'colors' );
+c.setTheme( { log: 'bgBrightYellow' } );
 
 // NOTE: function to calculate the active days
 const getActiveDays = ( workouts ) => {
@@ -69,8 +71,10 @@ const renderUserData = ( route, req, res, next ) => {
 			const summarizedExercises = {};
 			summarizedExercises.exercises = prepareExercises( pastWorkouts );
 			summarizedExercises.totalExercises = summarizedExercises.exercises.length;
+			// 6. get most recent workout
+			const mostRecentWorkout = pastWorkouts.at( -1 );
 
-			res.render( route, { pastWorkouts, totalWorkouts, summarizedExercises, activeDays, username } );
+			res.render( route, { pastWorkouts, totalWorkouts, mostRecentWorkout, summarizedExercises, activeDays, username } );
 		} )
 		.catch( ( err ) => next( err ) );
 };

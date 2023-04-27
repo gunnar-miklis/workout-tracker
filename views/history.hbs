@@ -15,9 +15,12 @@
 <ul class="workouts-ul add-space-after">
 	{{#each pastWorkouts}}
 		<details class="container">
-			<summary class="flex-row-between">
+			<summary class="flex-column">
 				<h3>{{title}}</h3>
-				<p>{{formatDate date}}</p>
+				<div class="flex-row-between secondary-text">
+					<p><img src="../images/icons/clock-icon.png" class="img-icon"> {{duration}}</p>
+					<p>{{formatDate date}}</p>
+				</div>
 			</summary>
 				<div class="details flex-column">
 					<p><i>{{description}}</i></p>
@@ -29,14 +32,14 @@
 					</ul>
 				</div>
 				<div>
-					<button class="logout add-space-before" onclick="document.getElementById('{{_id}}').style.display = 'flex'">Delete Workout 🗑️ {{_id}}</button>
+					<button class="logout add-space-before" onclick="document.getElementById('{{_id}}').style.display = 'flex'">🗑️ Delete Workout</button>
 					<div id="{{_id}}" class="delete-confirmation">
 						<div>
 							<h2><strong>{{title}}</strong></h2>
 							<h4>Do you really want to delete this Workout?</h4>
 						</div>
 						<form id="{{_id}}" action="/delete" method="POST" class="add-space-before">
-							<label for="id">{{_id}}</label>
+							<label for="id" hidden>{{_id}}</label>
 							<input name="id" value="{{_id}}" hidden>
 							<button class="main-button">YES</button>
 							<a class="standard-button" onclick="document.getElementById('{{_id}}').style.display='none'">NO</a>
