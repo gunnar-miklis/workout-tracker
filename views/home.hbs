@@ -5,18 +5,19 @@
   }
 </script>
 {{> navbar}}
+<h1>Hi, {{username}}!</h1>
 <header class="flex-column-start">
-  <p class="secondary-text center-text">HOME</p>
-	<h1>Hey, {{username}}</h1>
   <div class="container flex-row-evenly-center home-details">
     <p class="secondary-text center-text"><span class="big-text main-text">{{totalWorkouts}}</span> Total <br> Workouts</p>
 	  <p class="secondary-text center-text"><span class="big-text main-text">{{summarizedExercises.totalExercises}}</span> Total <br> Exercises</p>
 	  <p class="secondary-text center-text"><span class="big-text main-text">{{activeDays}}</span> Active <br> Days</p>
   </div>
 </header>
+<p>Last Workout:</p>
 
+
+<br>
 <div class="flex-column-start">
-  <p>Are you ready for a new workout?</p>
+  <p class="center-text">Are you ready for a new workout?</p>
 	<a href='/tracker' class="main-button" onclick="startNewTimer()"> Start New Workout </a>
 </div>
-<p>Last Workout:</p>
