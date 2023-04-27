@@ -63,6 +63,11 @@ router.post( '/signup', ( req, res, next ) => {
 		} );
 } );
 
+// NOTE: Welcome Page
+router.get( '/welcome', isLoggedIn, ( req, res, next ) => {
+	res.render( 'auth/welcome' );
+} );
+
 // NOTE: Login Page
 router.get( '/login', ( req, res, next ) => {
 	res.render( 'auth/login' );
@@ -104,11 +109,6 @@ router.get( '/auth/logout', ( req, res, next ) => {
 		if ( err ) next( err );
 		res.render( 'auth/logout' );
 	} );
-} );
-
-// NOTE: Welcome Page
-router.get( '/welcome', isLoggedIn, ( req, res, next ) => {
-	res.render( 'auth/welcome' );
 } );
 
 module.exports = router;
