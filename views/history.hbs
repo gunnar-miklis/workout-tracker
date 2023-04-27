@@ -5,7 +5,7 @@
 
 <br>
 <p>All your Exercises:</p>
-<details class="container add-space-after">
+<details class="container">
 	<summary class="flex-row-between">
 		<h3>Show</h3>
 	</summary>
@@ -13,10 +13,14 @@
 			{{> exerciseTable summarizedExercises}}
 		</div>
 </details>
+<div class="container">
+	<canvas id="exercises-chart"></canvas>
+	<script src="/js/exercise-chart.js"></script>
+</div>
 
 <br>
 <p>All your Workouts:</p>
-<ul class="workouts-ul add-space-after">
+<ul class="workouts-ul">
 	{{#each pastWorkouts}}
 		<details class="container">
 			<summary class="flex-column">
@@ -37,7 +41,7 @@
 							<h2><strong>{{title}}</strong></h2>
 							<h4>Do you really want to delete this Workout?</h4>
 						</div>
-						<form id="{{_id}}" action="/delete" method="POST" class="add-space-before">
+						<form id="{{_id}}" action="/delete" method="POST">
 							<label for="id" hidden>{{_id}}</label>
 							<input name="id" value="{{_id}}" hidden>
 							<button class="main-button">YES</button>
