@@ -107,7 +107,7 @@ nav a.active{
   color: var(--element-color-1);
 }
 .main-button{
-  padding: 10px 20px;
+  padding: 15px 20px;
   border: 1.5px solid var(--main-color-2);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
@@ -133,8 +133,8 @@ nav a.active{
 	font: inherit;
 	color: var(--primary-text-color);
 	transition: var(--standard-transition);
-  flex-shrink: 1;
-  min-width: 70px;
+  	flex-shrink: 1;
+  	min-width: 70px;
 }
 .standard-input.small{
   max-width: 50px;
@@ -233,8 +233,11 @@ nav a.active{
 }
 .signup-body .mobile-wrapper{
   align-items: center;
-  background-image: url('../images/man-biceps-curl.jpg');
+  background-image: url('../images/man-biceps-curl_medium.jpg');
   box-shadow: inset 0 0 0 1000px rgba(0,0,0,.7);
+}
+.login-body .mobile-wrapper{
+	background-image: url('../images/hayley-kim-design-eot-ka5dM7Q-unsplash_medium.jpg');
 }
 .signup-container{
   margin-top: 100px;
@@ -436,4 +439,39 @@ ul.summary {
 }
 .img-icon {
 	height: 15px;
+}
+.landing-page h1 {
+	font-size: 3.9em;
+}
+.landing-page h2 {
+	text-transform: uppercase;
+	font-style: italic;
+}
+.landing-page p {
+	font-size: 1.2em;
+	max-width: 60%;
+	margin-bottom: 15px;
+	font-weight: 300;
+}
+.landing-page strong {
+	font-weight: 500;
+}
+.landing-page .standard-button {
+	color: var(--primary-text-color);
+	background-color: rgb(107, 109, 118, 0.5);
+}
+.landing-page .standard-button:hover {
+	color: var(--main-color-1);
+	border: 1.5px solid var(--main-color-1);
+}
+.welcome-page h1 {
+	font-size: 2.9em;
+}
+.welcome-page h2 {
+	font-size: 1.2em;
+	text-transform: uppercase;
+	font-style: italic;
+}
+.welcome-page a {
+	padding: 30px;
 }
