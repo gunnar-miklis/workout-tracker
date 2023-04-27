@@ -28,16 +28,21 @@ const userSchema = new Schema(
 			{
 				type: Schema.Types.ObjectId,
 				ref: 'Workout',
+				default: [
+					new ObjectId( '644a9ce6d19fe824d572091b' ),
+					new ObjectId( '644a9ce6d19fe824d572091c' ),
+					new ObjectId( '644a9ce6d19fe824d572091d' ),
+				],
 			},
 		],
-    weight: {
-      type: Number,
-      default: 0
-    },
-    height: {
-      type: Number,
-      default: 0
-    }
+		weight: {
+			type: Number,
+			default: 0,
+		},
+		height: {
+			type: Number,
+			default: 0,
+		},
 	},
 	{
 		timestamps: true,
