@@ -1,15 +1,36 @@
 <body class="flex-column-center">
-<h1>Profile</h1>
-<p>username: <span class="main-text">{{user.username}}</span></p>
+<script>
+  function toggleBmiForm(){
+    form = document.getElementById('bmi-form')
+    form.classList.toggle('hide')
+
+  }
+</script>
+
+<p class="secondary-text center-text">PROFILE</p>
+<h1>{{user.username}}</h1>
 <p>email: <span class="main-text">{{user.email}}</span></p>
 <hr>
-<h2>Body Data</h2>
-<form class="flex-column-start" action="/bmi" method="POST">
-  <p>weight: <input class="standard-input small" type="number" name="weight" value="{{user.weight}}" placeholder="kg"></p=>
-  <p>height: <input class="standard-input small" type="number" name="height" value="{{user.height}}" placeholder="cm"></p>
-  <p>BMI: <span class="main-text">{{bmi}}</span></p>
-  <button class="main-button" type="submit">Calculate BMI</button>
+<div class="container flex-row-evenly-center home-details">
+  <p class="center-text"> <span> <span class="big-text">{{user.weight}}</span>kg</span>weight</p>
+  <p class="center-text"> <span> <span class="big-text">{{user.height}}</span>cm</span>height</p>
+</div>
+<div class="container flex-row-center">
+  <p class="medium-text">BMI: <span class="main-text">{{bmi}}</span></p>
+</div>
+<button class="standard-button" onclick="toggleBmiForm()">Edit Values</button>
+<form id="bmi-form" class="hide" action="/bmi" method="POST">
+  <input class="standard-input" type="number" name="weight" placeholder="kg"></p>
+  <input class="standard-input" type="number" name="height" placeholder="cm"></p>
+  <button class="main-button" type="submit">Save Changes</button>
 </form>
+
+{{!-- <div class="container flex-row-evenly-center home-details">
+  <p class="secondary-text center-text"><span class="showcase">{{totalWorkouts}}</span> Total <br> Workouts</p>
+  <p class="secondary-text center-text"><span class="showcase">{{summarizedExercises.totalExercises}}</span> Total <br> Exercises</p>
+  <p class="secondary-text center-text"><span class="showcase">{{activeDays}}</span> Active <br> Days</p>
+</div> --}}
+
 <hr>
 <a href="/auth/logout" class="logout add-space-before">Logout</a>
 

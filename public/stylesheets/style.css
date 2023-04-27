@@ -5,7 +5,7 @@
 }
 :root{
   --element-color-1: #13161B;
-  --element-color-15: #23242c;
+  --element-color-15: #24282E;
   --element-color-2: #2C2E35;
   --element-color-3: #46484E;
 
@@ -382,11 +382,13 @@ ul.summary {
 	max-width: 400px;
 	text-align: center;
 }
-span.showcase {
-	color: var(--main-color-2);
-	font-size: 2.5rem;
+.medium-text{
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+.big-text{
+  font-size: 2.5rem;
 	font-weight: 500;
-	margin-right: 10px;
 }
 .text-hint {
 	font-style: italic;
@@ -425,4 +427,11 @@ span.showcase {
 .home-details p{
   display: flex;
   flex-direction: column;
+}
+#bmi-form{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}#bmi-form.hide{
+  display: none;
 }
