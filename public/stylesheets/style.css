@@ -92,19 +92,19 @@ nav a.active{
   box-shadow: var(--standard-shadow);  
 }
 .standard-button{
-  padding: 10px 30px;
+  padding: 15px 20px;
   border: 1.5px solid var(--secondary-text-color);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
   background-color: var(--element-color-3);
-  color: var(--secondary-text-color);
+  color: var(--primary-text-color);
   text-align: center;
   cursor: pointer;
 }
 .standard-button:hover, .standard-button:focus{
   outline: none;
-  background-color: var(--secondary-text-color);
-  color: var(--element-color-1);
+  background-color: var(--element-color-2);
+  border-color: var(--primary-text-color);
 }
 .main-button{
   padding: 15px 20px;
@@ -378,6 +378,7 @@ ul.summary {
 	justify-content: center;
 	align-items: center;
 	z-index: 99;
+	font-size: 1.5em;
 }
 .delete-confirmation div:first-child {
 	margin-top: -100px;
@@ -456,13 +457,18 @@ ul.summary {
 .landing-page strong {
 	font-weight: 500;
 }
-.landing-page .standard-button {
+.landing-page .standard-button, 
+.delete-confirmation-button {
 	color: var(--primary-text-color);
 	background-color: rgb(107, 109, 118, 0.5);
 }
-.landing-page .standard-button:hover {
+.landing-page .standard-button:hover,
+.delete-confirmation-button:hover {
 	color: var(--main-color-1);
 	border: 1.5px solid var(--main-color-1);
+}
+.delete-confirmation-button {
+	padding: 16px;
 }
 .welcome-page h1 {
 	font-size: 2.9em;
