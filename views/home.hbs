@@ -4,7 +4,6 @@
     localStorage.clear('timeInSeconds')
   }
 </script>
-{{> navbar}}
 <h1>Hi, {{username}}!</h1>
 <header class="flex-column-start">
   <div class="container flex-row-evenly-center home-details">
@@ -14,13 +13,13 @@
   </div>
 </header>
 
-
 <br>
 <div class="flex-column-start">
   <p class="center-text">Are you ready for a new workout?</p>
 	<a href='/tracker' class="main-button" onclick="startNewTimer()"> Start New Workout </a>
 </div>
 
+<br>
 {{#if mostRecentWorkout}}
 	<p>Most Recent Workout:</p>
 	<ul class="workouts-ul add-space-after">
@@ -39,3 +38,7 @@
 			</details>
 	</ul>
 {{/if}}
+<br>
+<br>
+<br>
+{{> navbar}}
