@@ -4,7 +4,6 @@
     localStorage.clear('timeInSeconds')
   }
 </script>
-{{> navbar}}
 <h1>Hi, {{username}}!</h1>
 <header class="flex-column-start">
   <div class="container flex-row-evenly-center home-details">
@@ -13,15 +12,12 @@
 	  <p class="secondary-text center-text"><span class="big-text main-text">{{activeDays}}</span> Active <br> Days</p>
   </div>
 </header>
-<p>Last Workout:</p>
-
-
 <br>
 <div class="flex-column-start">
   <p class="center-text">Are you ready for a new workout?</p>
 	<a href='/tracker' class="main-button" onclick="startNewTimer()"> Start New Workout </a>
 </div>
-
+<br>
 <p>Most Recent Workout:</p>
 <ul class="workouts-ul add-space-after">
 		<details class="container">
@@ -38,3 +34,7 @@
 				</div>
 		</details>
 </ul>
+<br>
+<br>
+<br>
+{{> navbar}}
