@@ -1,18 +1,4 @@
 <body class="flex-column-center">
-<nav>
-  <a class="flex-column-center" href="/home">
-    <img src="../images/icons/home-icon.png">
-    Home
-  </a>
-  <a class="flex-column-center" href="/history">
-    <img src="../images/icons/statistics-icon.png">
-    History
-  </a>
-  <a class="flex-column-center" href="/profile">
-    <img src="../images/icons/profile-icon.png">
-    Profile
-  </a>
-</nav>
 <h1>Profile</h1>
 <p>username: <span class="main-text">{{user.username}}</span></p>
 <p>email: <span class="main-text">{{user.email}}</span></p>
@@ -25,3 +11,6 @@
   <button class="main-button" type="submit">Calculate BMI</button>
 </form>
 <hr>
+<a href="/auth/logout" class="logout add-space-before">Logout</a>
+
+{{> navbar}}

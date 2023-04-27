@@ -4,28 +4,19 @@
     localStorage.clear('timeInSeconds')
   }
 </script>
-<nav>
-  <ul class="flex-row-center">
-    <li><a class="active" href="/home">Home</a></li>
-    <li><a href="/history">History</a></li>
-    <li><a href="/profile">Profile</a></li>
-  </ul>
-</nav>
-<div class="flex-column-center center-text add-space-after">
-	<h1 class="add-space-before">Welcome {{username}}</h1>
-	<p><span class="showcase">{{totalWorkouts}}</span> Total Workouts</p>
-	<p><span class="showcase">{{summarizedExercises.totalExercises}}</span> Total Exercises</p>
-	<p><span class="showcase">{{activeDays}}</span> Active Days</p>
+{{> navbar}}
+<header class="flex-column-start">
+  <p class="secondary-text center-text">HOME</p>
+	<h1>Hey, {{username}}</h1>
+  <div class="container flex-row-evenly-center home-details">
+    <p class="secondary-text center-text"><span class="showcase">{{totalWorkouts}}</span> Total <br> Workouts</p>
+	  <p class="secondary-text center-text"><span class="showcase">{{summarizedExercises.totalExercises}}</span> Total <br> Exercises</p>
+	  <p class="secondary-text center-text"><span class="showcase">{{activeDays}}</span> Active <br> Days</p>
+  </div>
+</header>
+
+<div class="flex-column-start">
+  <p>Are you ready for a new workout?</p>
+	<a href='/tracker' class="main-button" onclick="startNewTimer()"> Start New Workout </a>
 </div>
-
-<div class="flex-column-center center-text add-space-after">
-	<a href='/tracker' class="main-button track-button" onclick="startNewTimer()"> Track Workout </a>
-  
-	<p class="secondary-text text-hint">Click to start a new Workout!</p>
-</div>
-
-<hr class="add-space-before add-space-after">
-
-
-
-<a href="/auth/logout" class="logout add-space-before">Logout</a>
+<p>Last Workout:</p>
