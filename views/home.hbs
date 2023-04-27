@@ -1,5 +1,4 @@
 <body class="flex-column-center">
-<script type="text/javascript" src="/js/delete-confirmation.js" defer></script>
 <script>
   function startNewTimer(){
     localStorage.clear('timeInSeconds')
@@ -8,7 +7,7 @@
 <nav>
   <ul class="flex-row-center">
     <li><a class="active" href="/home">Home</a></li>
-    <li><a href="/statistics">Statistics</a></li>
+    <li><a href="/history">History</a></li>
     <li><a href="/profile">Profile</a></li>
   </ul>
 </nav>
@@ -27,52 +26,6 @@
 
 <hr class="add-space-before add-space-after">
 
-<h1>Progress</h1>
 
-<h2>Your Exercises</h2>
-<details class="container add-space-after">
-	<summary class="flex-row-between">
-		<h3>Show</h3>
-	</summary>
-		<div class="details flex-column">
-			{{> exerciseTable summarizedExercises}}
-		</div>
-</details>
-
-<h2>Your Workouts</h2>
-<ul class="workouts-ul add-space-after">
-	{{#each pastWorkouts}}
-		<details class="container">
-			<summary class="flex-row-between">
-				<h3>{{title}}</h3>
-				<p>{{formatDate date}}</p>
-			</summary>
-				<div class="details flex-column">
-					<p><i>{{description}}</i></p>
-					{{> exerciseTable this}}
-					<h4>Summary</h4>
-					<ul class="summary">
-						<li>Total Exercises: <strong>{{totalExercises}}</strong></li>
-						<li>Total Duration: <strong>{{duration}}</strong></li>
-					</ul>
-				</div>
-				<div>
-					<button class="logout add-space-before" onclick="document.getElementById('{{_id}}').style.display = 'flex'">Delete Workout 🗑️</button>
-					<div id="{{_id}}" class="delete-confirmation">
-						<div>
-							<h2><strong>{{title}}</strong></h2>
-							<h4>Do you really want to delete this Workout?</h4>
-						</div>
-						<form id="{{_id}}" action="/delete" method="POST" class="add-space-before">
-							<label for="id"hidden>{{_id}}</label>
-							<input name="id" value="{{_id}}" hidden>
-							<button class="main-button">YES</button>
-							<a class="standard-button" onclick="document.getElementById('{{_id}}').style.display='none'">NO</a>
-						</form>
-					</div>
-				</div>
-		</details>
-	{{/each}}
-</ul>
 
 <a href="/auth/logout" class="logout add-space-before">Logout</a>
