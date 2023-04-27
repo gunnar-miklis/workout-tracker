@@ -5,11 +5,8 @@ const Exercise = require( '../models/Exercise.model' );
 const isLoggedIn = require( '../utils/isLoggedIn' );
 const User = require( '../models/User.model' );
 const exercisesList = require( '../db/list-of-exercises' ).exercisesList;
-const c = require( 'colors' );
-c.setTheme( { log: 'bgBrightYellow' } );
 
 router.get( '/tracker', isLoggedIn, ( req, res, next ) => {
-	console.log( c.log( 'req.session.previousWorkoutExercises :>> ' ), req.session.previousWorkoutExercises );
 	if ( req.session.previousWorkoutExercises ) {
 		// get all exercises for this workout session ( contains only ids )
 		const previousWorkoutExercisesIds = req.session.previousWorkoutExercises;
@@ -28,7 +25,6 @@ router.get( '/tracker', isLoggedIn, ( req, res, next ) => {
 				const previousWorkoutExercises = {};
 				// need to be stored in a property "exercises", in order to use the partial correctly later
 				previousWorkoutExercises.exercises = result;
-				console.log( c.log( 'result :>> ' ), result );
 				res.render( 'tracker', { previousWorkoutExercises } );
 			} )
 			.catch( ( err ) => next( err ) );
@@ -67,9 +63,7 @@ router.post( '/saveworkout', ( req, res, next ) => {
 					res.redirect( '/home' );
 				} );
 		} )
-		.catch( ( err ) => {
-			next( err );
-		} );
+		.catch( ( err ) => next( err ) );
 } );
 
 router.post( '/abort', ( req, res, next ) => {
